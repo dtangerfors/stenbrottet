@@ -1,31 +1,20 @@
-import AcmeLogo from '@/app/ui/acme-logo';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
+import Image from "next/image";
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
-        {/* <AcmeLogo /> */}
-      </div>
-      <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-        <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
-          <p className={`text-xl text-gray-800 md:text-3xl md:leading-normal`}>
-            <strong>Welcome to Acme.</strong> This is the example for the{' '}
-            <a href="https://nextjs.org/learn/" className="text-blue-500">
-              Next.js Learn Course
-            </a>
-            , brought to you by Vercel.
-          </p>
-          <Link
-            href="/login"
-            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
-          >
-            <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
-          </Link>
+    <main className="relative w-full h-screen flex lg:p-6">
+      <div className="relative w-full h-full flex flex-col justify-end md:justify-center items-center overflow-hidden lg:rounded-3xl">
+        <figure className="absolute inset-0 w-full h-full">
+          <Image src="/digerhuvud-desktop.jpg" alt="Ett grönt fält med blåeld" width={1920} height={1080} className="w-full h-full object-cover" />
+        </figure>
+        <div className="relative z-10 mb-6">
+          <h1 className="font-serif font-semibold text-3xl text-white">Stenbrottsvägen</h1>
         </div>
-        <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-          {/* Add Hero Images Here */}
+        <div className="relative z-10 w-full max-w-md bg-white rounded-t-[40px] md:rounded-b-[40px] -mt-10 md:mt-0 mx-auto p-6">
+          <button className="flex justify-center w-full py-4 px-12 rounded-full bg-secondary font-sans font-bold text-sm uppercase tracking-wider text-white">Logga in</button>
+          <div className="py-6 md:pt-12 md:pb-0 text-center">
+            <p className="font-sans font-normal text-primary-950">Inget konto än? <a href="/" className="font-bold text-secondary">Skapa konto!</a></p>
+          </div>
         </div>
       </div>
     </main>

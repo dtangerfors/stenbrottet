@@ -1,0 +1,114 @@
+.rbc-calendar {
+   @apply relative flex flex-col rounded-3xl h-80 md:h-[34rem] bg-gray-50 overflow-hidden dark:bg-gray-900;
+}
+
+/* Navigation */
+.rbc-toolbar {
+   @apply flex justify-between items-center p-4;
+}
+
+.rbc-btn-group:last-child {
+   @apply hidden;
+}
+
+.rbc-toolbar-label {
+   @apply text-xs uppercase font-medium text-black dark:text-white;
+}
+
+.rbc-btn-group {
+   @apply flex gap-1; 
+}
+
+.rbc-btn-group button {
+   @apply text-xs px-4 py-1 rounded-3xl bg-gray-200 dark:bg-gray-700 text-black dark:text-white hover:bg-primary;
+}
+
+/* View */
+.rbc-month-view {
+   @apply flex-1 flex flex-col bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800;
+}
+
+/* Header Row */
+.rbc-month-header {
+   @apply flex border-b border-gray-200 dark:border-gray-800;
+}
+
+.rbc-header {
+   @apply flex-1 py-1 text-center text-xs text-black font-medium uppercase dark:text-white;
+}
+
+.rbc-header:not(:last-child) {
+   @apply border-r border-gray-200 dark:border-gray-800;
+}
+
+/* Month Row */
+.rbc-month-row {
+   @apply flex flex-col flex-1 relative;
+}
+
+.rbc-month-row+.rbc-month-row {
+   @apply border-t border-gray-200 dark:border-gray-800;
+}
+
+.rbc-row-content {
+   @apply relative;
+}
+
+.rbc-row {
+   @apply flex;
+}
+
+.rbc-row-bg {
+   @apply absolute inset-0 flex flex-1;
+}
+
+/* Date */
+.rbc-date-cell {
+   @apply flex-1 text-right p-1;
+}
+
+.rbc-button-link {
+   @apply w-9 h-9 rounded-full grid place-items-center ml-auto text-sm text-black leading-none dark:text-white;
+}
+
+.rbc-now .rbc-button-link {
+   @apply text-white bg-primary;
+}
+
+.rbc-day-bg {
+   @apply flex-1;
+}
+
+.rbc-day-bg+.rbc-day-bg {
+   @apply border-l border-gray-200 dark:border-gray-800;
+}
+
+/* Off Range */
+.rbc-off-range-bg {
+   @apply bg-gray-100 dark:bg-gray-700;
+}
+
+/* Event */
+.rbc-row-segment {
+   @apply mb-1;
+}
+
+.rbc-event {
+   @apply bg-primary-50 rounded-md px-2 h-2 md:h-auto dark:bg-primary-300;
+}
+
+.rbc-event-continues-after {
+   @apply rounded-r-none ml-1;
+}
+
+.rbc-event-continues-prior {
+   @apply rounded-l-none mr-1;
+}
+
+.rbc-event-continues-prior.rbc-event-continues-after {
+   @apply rounded-none mx-0;
+}
+
+.rbc-event-content {
+   @apply text-xs text-black sr-only md:not-sr-only dark:text-white;
+}
