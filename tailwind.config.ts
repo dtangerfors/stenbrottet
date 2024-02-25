@@ -11,41 +11,53 @@ const config: Config = {
       white: '#FFFFFF',
       black: '#0e100e',
       gray: {
-        '50': '#f6f7f6',
-    '100': '#e2e5e2',
-    '200': '#c5cbc4',
-    '300': '#a0aa9e',
-    '400': '#7c877a',
-    '500': '#616c60',
-    '600': '#4c564b',
-    '700': '#3f473e',
-    '800': '#353b34',
-    '900': '#2e332e',
-    '950': '#0e100e',
+        '50': '#f2f3f2',
+        '100': '#e2e5e2',
+        '200': '#c5cac5',
+        '300': '#a0a8a1',
+        '400': '#7c857d',
+        '500': '#626a63',
+        '600': '#4d544e',
+        '700': '#404541',
+        '800': '#353a35',
+        '900': '#2f3230',
+        '950': '#0e100e',
       },
     },
     fontFamily: {
       sans: ['var(--font-satoshi)'],
-      serif: ['var(--font-erode)'],
+      serif: "larken",
     },
     extend: {
       gridTemplateColumns: {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
+      gridAutoRows: {
+        card: 'minmax(48px,auto)',
+      },
+      padding: {
+        'safe-bottom': 'max(1.5rem, env(safe-area-inset-bottom))',
+        "safe-top": "env(safe-area-inset-top)",
+        "safe-left": "env(safe-area-inset-left)",
+        "safe-right": "env(safe-area-inset-right)",
+      },
+      borderRadius: {
+        '4xl': '32px',
+      },
       colors: {
         primary: {
-          DEFAULT: '#17412d',
-          '50': '#f0f9f3',
-          '100': '#daf1e0',
-          '200': '#b8e2c6',
-          '300': '#89cca3',
-          '400': '#57b07c',
-          '500': '#359460',
-          '600': '#25764c',
-          '700': '#1e5e3e',
-          '800': '#1a4b33',
-          '900': '#17412d',
-          '950': '#0b2318',
+          DEFAULT: '#223c3b',
+          '50': '#f4f9f8',
+          '100': '#d9eeeb',
+          '200': '#b2ddd5',
+          '300': '#84c4bc',
+          '400': '#5ba69f',
+          '500': '#418b85',
+          '600': '#326f6c',
+          '700': '#2b5a57',
+          '800': '#264948',
+          '900': '#223c3b',
+          '950': '#102223',
         },
         secondary: {
           DEFAULT: '#6ec261',
@@ -61,16 +73,30 @@ const config: Config = {
           '900': '#23481f',
           '950': '#0e270c',
         },
-      },
-    },
-    keyframes: {
-      shimmer: {
-        '100%': {
-          transform: 'translateX(100%)',
+        warning: {
+          '50': '#fef4f2',
+          '100': '#fee7e2',
+          '200': '#fed2ca',
+          '300': '#fcb3a5',
+          '400': '#f88771',
+          '500': '#f06449',
+          '600': '#dd4325',
+          '700': '#b9351c',
+          '800': '#992f1b',
+          '900': '#7f2d1d',
+          '950': '#45140a',
         },
+        beige: '#E6EBDB',
       },
+      screens: {
+        'laptop': '1025px'
+      }
     },
+    
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms'), 
+    require('@headlessui/tailwindcss')({ prefix: 'ui' })
+],
 };
 export default config;
