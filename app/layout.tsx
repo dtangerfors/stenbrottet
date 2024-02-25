@@ -1,5 +1,9 @@
+import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import '@/app/ui/global.css';
+import { MobileNav } from './ui/dashboard/mobile-nav';
+import { getDeviceType } from './lib/utils';
+import clsx from 'clsx';
 
 const satoshi = localFont({
   src: [
@@ -28,31 +32,37 @@ const satoshi = localFont({
   variable: '--font-satoshi',
 });
 
-const erode = localFont({
-  src: [
-    {
-      path: './fonts/Erode-Regular.ttf',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: './fonts/Erode-Semibold.ttf',
-      weight: '600',
-      style: 'normal',
-    },
-  ],
-  display: 'swap',
-  variable: '--font-erode',
-});
+export const metadata: Metadata = {
+  title: 'Stenbrottsvägen',
+  appleWebApp: { statusBarStyle: 'black-translucent' },
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  userScalable: false,
+};
+
+export default function RootLayout({ children }: { children: JSX.Element[] }) {
+  const { isMobile } = getDeviceType();
+
   return (
     <html lang="sv">
-      <body className={`${erode.variable} ${satoshi.variable} font-sans dark:bg-black`}>{children}</body>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/mbx5ori.css" />
+      </head>
+      <body
+        className={clsx("relative flex flex-col min-h-screen bg-gray-50 font-sans dark:bg-black", satoshi.variable, isMobile && "app-mobile")}
+      >
+        
+          {children}
+        {isMobile && (
+          <div className="fixed bottom-0 left-0 z-20 w-full pb-safeBottom rounded-t-4xl bg-white px-6 pb-safe-bottom dark:bg-gray-950 shadow-lg">
+            <MobileNav />
+          </div>
+        )}
+      </body>
     </html>
   );
 }
