@@ -1,0 +1,35 @@
+.wp-post-content p {
+  @apply text-sm  text-gray-700 dark:text-gray-100;
+}
+
+.wp-block-heading {
+  @apply text-sm font-bold dark:text-white;
+}
+
+.wp-block-table {
+  @apply -mx-6;
+}
+
+.wp-block-table:not(:last-child) {
+  @apply mb-4;
+}
+
+.wp-block-table:not(:first-child) {
+  @apply mt-4;
+}
+
+.wp-block-table table {
+  @apply relative w-full text-left text-sm text-black dark:text-gray-100;
+}
+
+.wp-block-table table th {
+  @apply pb-2 first:pl-6 last:pr-6;
+}
+
+.wp-block-table table tr:nth-child(even) {
+  @apply bg-gray-100 dark:bg-black;
+}
+
+.wp-block-table table td {
+  @apply py-2 first:pl-6 last:pr-6;
+}

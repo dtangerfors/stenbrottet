@@ -2,17 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-input[type='number'] {
-  -moz-appearance: textfield;
-  appearance: textfield;
+.gallery-main-slider.swiper {
+  @apply overflow-visible;
 }
 
-input[type='number']::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.swiper-thumbs .swiper-slide:not(.swiper-slide-thumb-active) {
+  @apply opacity-60;
 }

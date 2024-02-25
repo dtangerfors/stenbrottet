@@ -6,35 +6,34 @@ import { usePathname } from 'next/navigation';
 import {
   UserIcon,
   HomeIcon,
-  InformationCircleIcon,
-  Bars3Icon,
+  CalendarIcon,
+  Bars3Icon
 } from '@heroicons/react/24/outline';
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
 const links = [
   { name: 'Hem', href: '/app', icon: HomeIcon },
-  { name: 'Info', href: '/app/info', icon: InformationCircleIcon },
+  { name: 'Kalender', href: '/app/calendar', icon: CalendarIcon },
   { name: 'Profil', href: '/app/profile', icon: UserIcon },
-  { name: 'Meny', href: '/app/menu', icon: Bars3Icon },
 ];
 
 export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className={"flex gap-2"}>
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
           <li key={`menu-item-${link.name.toLowerCase()}`}>
             <Link
-              key={link.name}
               href={link.href}
               className={clsx(
-                "text-black flex grow items-center gap-2 rounded-3xl p-4 font-sans text-base font-medium hover:bg-secondary hover:text-white transition-all",
-                {"bg-gray-50 text-black dark:bg-gray-900 dark:text-white" : pathname !== link.href},
-                {"bg-secondary-200 text-secondary-700 dark:bg-secondary-900 dark:text-secondary-200" : pathname === link.href}
+                "flex grow items-center gap-2 px-2 font-sans text-base font-medium hover:text-black transition-all",
+                {"text-gray-500 dark:text-white" : pathname !== link.href},
+                {"text-secondary dark:text-secondary-200" : pathname === link.href},
+                "leading-[4rem]"
               )}
             >
               <LinkIcon className="w-6" />
@@ -42,7 +41,22 @@ export default function NavLinks() {
             </Link>
           </li>
         );
+        
       })}
+      <li key={`menu-item-menu`} className="laptop:hidden">
+            <Link
+              href="/app/menu"
+              className={clsx(
+                "flex grow items-center gap-2 px-2 font-sans text-base font-medium hover:text-black transition-all",
+                {"text-gray-500 dark:text-white" : pathname !== "/app/menu"},
+                {"text-secondary dark:text-secondary-200" : pathname === "/app/menu"},
+                "leading-[4rem]"
+              )}
+            >
+              <Bars3Icon className="w-6" />
+              <p className="hidden md:block">Meny</p>
+            </Link>
+          </li>
     </ul>
   );
 }
