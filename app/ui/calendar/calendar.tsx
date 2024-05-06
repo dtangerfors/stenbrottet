@@ -55,7 +55,7 @@ export const BigCalendar = ({events, onNavigate}: {events: BookingEvent[], onNav
       events={events}
       onNavigate={onNavigate}
       eventPropGetter={eventStyleGetter}
-      style={{ height: isMobile ? 275 : "auto" }}
+      // style={{ height: isMobile ? 275 : "auto" }}
     />
   )
 }
