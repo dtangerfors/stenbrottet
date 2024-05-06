@@ -5,12 +5,13 @@ import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/16/solid';
 import { GalleryProps } from '@/app/lib/definitions';
 import { Transition, Dialog } from '@headlessui/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { Thumbs } from 'swiper/modules';
 import 'swiper/css';
 
 export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);;
 
   function closeModal() {
     setIsOpen(false);
