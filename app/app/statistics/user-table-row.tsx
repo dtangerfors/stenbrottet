@@ -93,8 +93,8 @@ function RowsByYear({data}: { data:  Booking[] }) {
   );
   function totalDays(arrival: string, departure: string) {
     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    const firstDate = new Date(parseInt(arrival));
-    const secondDate = new Date(parseInt(departure));
+    const firstDate = new Date(parseInt(arrival)).valueOf();
+    const secondDate = new Date(parseInt(departure)).valueOf();
   
     return Math.round(Math.abs((firstDate - secondDate) / oneDay));
   }
