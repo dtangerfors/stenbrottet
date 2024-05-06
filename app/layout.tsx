@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next';
-import localFont from 'next/font/local';
-import '@/app/ui/global.css';
-import { MobileNav } from './ui/dashboard/mobile-nav';
-import { getDeviceType } from './lib/utils';
 import clsx from 'clsx';
+import localFont from 'next/font/local';
+import { getDeviceType } from './lib/utils';
+import { Providers } from './providers';
+import '@/app/ui/global.css';
 
 const satoshi = localFont({
   src: [
@@ -53,15 +53,15 @@ export default function RootLayout({ children }: { children: JSX.Element[] }) {
         <link rel="stylesheet" href="https://use.typekit.net/mbx5ori.css" />
       </head>
       <body
-        className={clsx("relative flex flex-col min-h-screen bg-gray-50 font-sans dark:bg-black", satoshi.variable, isMobile && "app-mobile")}
-      >
-        
-          {children}
-        {isMobile && (
-          <div className="fixed bottom-0 left-0 z-20 w-full pb-safeBottom rounded-t-4xl bg-white px-6 pb-safe-bottom dark:bg-gray-950 shadow-lg">
-            <MobileNav />
-          </div>
+        className={clsx(
+          'relative flex min-h-screen flex-col bg-gray-50 font-sans dark:bg-black',
+          satoshi.variable,
+          isMobile && 'app-mobile',
         )}
+      >
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
