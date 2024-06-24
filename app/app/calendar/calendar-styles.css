@@ -28,7 +28,7 @@ body:not(.app-mobile) .rbc-calendar {
 }
 
 .app-mobile .rbc-toolbar {
-   @apply absolute bottom-0 w-full bg-white pt-3 px-4 mb-0 shadow-sm rounded-t-4xl;
+   @apply absolute bottom-0 w-full bg-offwhite pt-3 px-4 mb-0 shadow-sm rounded-t-4xl;
 }
 
 .app-mobile .rbc-btn-group {
@@ -92,7 +92,7 @@ body:not(.app-mobile) .rbc-calendar {
 
 /* Date */
 .rbc-date-cell {
-   @apply flex-1 text-right;
+   @apply flex-1 text-right p-1;
 }
 
 .rbc-button-link {
@@ -143,5 +143,5 @@ body:not(.app-mobile) .rbc-calendar {
 } 
 
 .rbc-event-content {
-   @apply text-xs text-black sr-only md:not-sr-only dark:text-white;
+   @apply hidden text-xs text-black sr-only md:not-sr-only dark:text-white;
 }

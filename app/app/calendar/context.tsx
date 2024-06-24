@@ -16,9 +16,9 @@ export default function CalendarProvider({children}: {children: React.ReactNode}
 
   const date = new Date();
   const year = date.getFullYear();
-  const monthI = date.getMonth();
+  const monthIndex = date.getMonth();
   const months = ["Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"]
-  const [currentMonth, setCurrentMonth] = useState(`${months[monthI]} ${year}`);
+  const [currentMonth, setCurrentMonth] = useState(`${months[monthIndex]} ${year}`);
   const [bookingsThisMonth, setBookingsThisMonth] = useState<BookingEvent[]>([]);
 
   return (

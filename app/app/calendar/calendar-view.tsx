@@ -1,21 +1,20 @@
 "use client"
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useCalendarContext } from "@/app/app/calendar/context";
 import { Booking, BookingEvent } from "@/app/lib/definitions";
-import { Calendar, dateFnsLocalizer } from "react-big-calendar"
-import format from "date-fns/format"
-import parse from "date-fns/parse"
-import startOfWeek from "date-fns/startOfWeek"
-import getDay from "date-fns/getDay"
-import sv from "date-fns/locale/sv"
+import { Calendar, DateLocalizer, dateFnsLocalizer } from "react-big-calendar"
+import { format, parse, startOfWeek, getDay } from 'date-fns';
+import sv from "date-fns/locale/sv";
 
-import "./calendar-styles.css"
+import "./calendar-styles.css";
+import { useAppContext } from "@/app/app/app-context";
 
 export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobile: RegExpMatchArray | null}) {
   const [events, setEvents] = useState<BookingEvent[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const { setCurrentMonth, setBookingsThisMonth } = useCalendarContext();
+  const {onOpen, setSelectedDate} = useAppContext();
 
   useEffect(() => {
     const bookingsToState: BookingEvent[] = [];
@@ -44,6 +43,15 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
     };
   };
 
+  const formats = {
+    weekdayFormat: "EEE",
+  };
+
+  const onDrillDown = useCallback((newDate: Date) => {
+    setSelectedDate(newDate.toISOString().split('T')[0]);
+    onOpen();
+  }, [onOpen, setSelectedDate])
+
   return (
    isLoaded ?  <Calendar
     culture="sv"
@@ -51,8 +59,10 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
     views={["month"]}
     messages={messages}
     events={events}
+    formats={formats}
     onNavigate={onNavigate}
     eventPropGetter={eventStyleGetter}
+    onDrillDown={onDrillDown}
   /> : <p>Laddar ...</p>
    
   )
@@ -89,7 +99,7 @@ const locales = {
 const localizer = dateFnsLocalizer({
   format,
   parse,
-  startOfWeek,
+  startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }),
   getDay,
   locales,
 })
