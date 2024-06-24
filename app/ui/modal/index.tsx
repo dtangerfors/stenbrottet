@@ -1,8 +1,7 @@
 "use client"
 import { useAppContext } from "@/app/app/app-context";
 import { BookingForm } from "@/app/form";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@nextui-org/modal";
-import { Button } from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@nextui-org/react";
 
 export function ModalContainer() {
   const {isOpen, onClose, onOpenChange} = useAppContext();
@@ -10,12 +9,18 @@ export function ModalContainer() {
   return (
     <>
       <Modal 
-        backdrop="blur" 
         isOpen={isOpen} 
         onClose={onClose} 
         onOpenChange={onOpenChange} 
-        size="xl"
-        className="m-0 rounded-b-none" 
+        size="full"
+        backdrop="blur" 
+        className="bg-transparent m-0 shadow-none border-none"
+        classNames={{
+          backdrop: "bg-white/80 backdrop-blur-lg",
+          body: "p-6 w-full max-w-screen-sm m-auto",
+          base: "h-svh max-h-none",
+          header: "bg-offwhite border-b border-gray-100"
+        }}
         scrollBehavior="inside"
         isDismissable={false}
         >

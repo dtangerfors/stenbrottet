@@ -6,7 +6,7 @@ import { showDate, showGuests, bookedDates, getRoomName } from "./display_functi
 const Card = ({booking, userIsLoggedIn, isUpdatingBooking}: {booking: Booking, userIsLoggedIn?: boolean, isUpdatingBooking?: any}) => {
 
   return (
-    <div className="flex flex-col gap-6 flex-30 overflow-hidden rounded-4xl bg-white p-3 pb-6 dark:bg-gray-950">
+    <div className="flex flex-col gap-6 flex-30 overflow-hidden rounded-4xl bg-white p-3 pb-6 dark:bg-gray-950 border border-gray-50 shadow-xl shadow-gray-700/10">
         <div className="col-span-3 grid place-items-center bg-secondary-100 text-xl font-semibold capitalize p-4 rounded-3xl text-secondary dark:bg-gray-700 dark:text-secondary-300">
           <span className="whitespace-nowrap">
             {bookedDates(booking.arrival, booking.departure)}

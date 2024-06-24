@@ -11,7 +11,7 @@ export const Section = ({ children, bgColor, pt = "default" }: SectionProps) => 
     "relative rounded-t-4xl", 
     "max-lg:-mt-8 max-lg:px-3 pb-20 last:pb-24",
     (pt === "default" ? "pt-6" : "pt-3"),
-    (bgColor ? bgColor : "bg-gray-50 dark:bg-black")
+    (bgColor ? bgColor : "bg-offwhite dark:bg-black")
     )}>
     {children}
   </section>

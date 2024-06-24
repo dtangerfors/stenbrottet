@@ -21,7 +21,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <main className={clsx("w-full grow", isMobile && "flex flex-col")}>{children}</main>
       </div>
       {isMobile && (
-        <div className="fixed bottom-0 left-0 z-20 w-full pb-safeBottom rounded-t-4xl bg-white px-6 pb-safe-bottom dark:bg-gray-950 shadow-lg">
+        <div className="fixed bottom-0 left-0 z-20 w-full bg-white px-6 pb-safe-bottom dark:bg-gray-950 border-t border-gray-100">
           <MobileNav />
         </div>
       )}

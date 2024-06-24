@@ -8,7 +8,7 @@ export const InfoPosts = ({ data }: { data: InfoPost[] }) => {
         return (
           <article
             key={post.id}
-            className="flex flex-col flex-1 gap-6 overflow-hidden rounded-4xl bg-white p-6 pb-6 dark:bg-gray-950"
+            className="flex flex-col flex-1 gap-6 overflow-hidden rounded-3xl bg-white p-6 pb-6 dark:bg-gray-950 border border-gray-50 shadow-xl shadow-gray-700/10"
           >
             <header className="text-center">
               <h2 className="text-xl text-black font-sans font-semibold dark:text-white">

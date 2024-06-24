@@ -55,7 +55,7 @@ export default async function Home() {
                 ))}
             </div>
         </Section>
-        <Section bgColor="max-lg:bg-gray-100">
+        <Section bgColor="max-lg:bg-gray-50">
             <h2 className="mb-6 font-serif text-2xl font-semibold text-primary max-lg:text-center lg:text-4xl">
               Information
             </h2>

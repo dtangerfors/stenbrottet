@@ -33,7 +33,7 @@ export default async function SideNav({
             "hover:bg-gray-200 hover:text-black",
             "dark:hover:bg-gray-800 dark:hover:text-white",
             !isMobile && "gap-2 p-2 rounded-3xl",
-            isMobile && "gap-4 p-5 bg-white dark:bg-gray-950",
+            isMobile && "gap-4 p-5 bg-white dark:bg-gray-950 border border-gray-50 shadow-xl shadow-gray-700/10",
             "text-gray-500 dark:text-gray-300",
             )}
             >
@@ -46,7 +46,7 @@ export default async function SideNav({
             {isMobile ? <SignOutMobile className="w-6" /> : <SignOutDesktop className="w-4" />}
           </span>
           <p className="grow text-left">Logga ut</p>
-          <ChevronRightIcon className="w-6" />
+          <ChevronRightIcon className="w-6 opacity-0 group-hover:opacity-100 transition-all" />
         </button>
       </form>
       <div className="text-center mt-3">

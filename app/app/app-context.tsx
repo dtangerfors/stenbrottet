@@ -8,15 +8,19 @@ type AppContextProps = {
   onOpen: () => void;
   onClose: () => void;
   onOpenChange: () => void;
+  selectedDate: string;
+  setSelectedDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const AppContext = createContext<AppContextProps>({} as AppContextProps);
 
 export default function AppProvider({children}: {children: React.ReactNode}) {
   const {isOpen, onOpen, onClose, onOpenChange} = useDisclosure();
+  const currentDate = new Date().toISOString().split('T')[0];
+  const [selectedDate, setSelectedDate] = useState<string>(currentDate);
 
   return (
-    <AppContext.Provider value={{isOpen, onOpen, onClose, onOpenChange}}>
+    <AppContext.Provider value={{isOpen, onOpen, onClose, onOpenChange, selectedDate, setSelectedDate}}>
       {children}
     </AppContext.Provider>
   )

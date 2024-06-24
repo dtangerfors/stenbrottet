@@ -9,3 +9,29 @@
 .swiper-thumbs .swiper-slide:not(.swiper-slide-thumb-active) {
   @apply opacity-60;
 }
+
+@layer components {
+  .btn-primary {
+    @apply rounded-3xl text-white uppercase tracking-wide font-sans font-medium bg-gradient-to-t from-secondary-500 to-secondary border border-secondary-500 shadow-[0_4px_3px_1px_#FCFCFC,_0_6px_8px_#e5f6e2,_0_-4px_4px_#e5f6e2,_0_-6px_4px_#FEFEFE,_inset_0_0_3px_0_#ccecc6] transition-all;
+  }
+
+  .btn-primary:hover:not([disabled]) {
+    @apply transition-all shadow-[0_4px_3px_1px_#FCFCFC,_0_6px_8px_#e5f6e2,_0_-4px_4px_#e5f6e2,_0_-6px_4px_#FEFEFE,_inset_0_0_6px_0_#306d28];
+  }
+
+  .btn-primary > * {
+    @apply inline-block relative transition-all;
+  }
+  
+  .btn-primary:hover:not([disabled]) > * {
+    @apply scale-[0.975];
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-4 py-3 text-sm;
+  }
+}

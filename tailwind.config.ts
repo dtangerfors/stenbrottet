@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-const {nextui} = require("@nextui-org/react");
+const { nextui } = require("@nextui-org/react");
 
 const config: Config = {
   content: [
@@ -31,20 +31,21 @@ const config: Config = {
       },
       colors: {
         white: "#FFFFFF",
-      black: "#0e100e",
-      gray: {
-        "50": "#f2f3f2",
-        "100": "#e2e5e2",
-        "200": "#c5cac5",
-        "300": "#a0a8a1",
-        "400": "#7c857d",
-        "500": "#626a63",
-        "600": "#4d544e",
-        "700": "#404541",
-        "800": "#353a35",
-        "900": "#2f3230",
-        "950": "#0e100e",
-      },
+        offwhite: "#f9f9f9",
+        black: "#0e100e",
+        gray: {
+          "50": "#f2f3f2",
+          "100": "#e2e5e2",
+          "200": "#c5cac5",
+          "300": "#a0a8a1",
+          "400": "#7c857d",
+          "500": "#626a63",
+          "600": "#4d544e",
+          "700": "#404541",
+          "800": "#353a35",
+          "900": "#2f3230",
+          "950": "#0e100e",
+        },
         primary: {
           DEFAULT: "#223c3b",
           "50": "#f4f9f8",
@@ -97,7 +98,27 @@ const config: Config = {
   darkMode: "class",
   plugins: [
     require("@headlessui/tailwindcss")({ prefix: "ui" }),
-    nextui()
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            default: {
+              "50": "#f2f3f2",
+              "100": "#e2e5e2",
+              "200": "#c5cac5",
+              "300": "#a0a8a1",
+              "400": "#7c857d",
+              "500": "#626a63",
+              "600": "#4d544e",
+              "700": "#404541",
+              "800": "#353a35",
+              "900": "#2f3230",
+              "950": "#0e100e",
+            }
+          }
+        }
+      }
+    })
 ],
 };
 export default config;

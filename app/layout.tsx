@@ -54,7 +54,7 @@ export default function RootLayout({ children }: { children: JSX.Element[] }) {
       </head>
       <body
         className={clsx(
-          'relative flex min-h-screen flex-col bg-gray-50 font-sans dark:bg-black',
+          'relative flex min-h-screen flex-col bg-offwhite font-sans dark:bg-black',
           satoshi.variable,
           isMobile && 'app-mobile',
         )}

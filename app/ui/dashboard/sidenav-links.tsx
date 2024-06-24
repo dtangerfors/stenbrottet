@@ -23,7 +23,7 @@ export default function SideNavLinks({isMobile}: SideNavLinksProps) {
   const pathname = usePathname();
 
   return (
-    <ul className={clsx("flex flex-col", !isMobile && "gap-2", isMobile && "gap-px rounded-3xl overflow-hidden")}>
+    <ul className={clsx("flex flex-col", !isMobile && "gap-2", isMobile && "gap-px rounded-3xl overflow-hidden border border-gray-50 shadow-xl shadow-gray-700/10")}>
       {links.map((link) => {
         const LinkIcon = link.icon;
         return (
@@ -33,7 +33,7 @@ export default function SideNavLinks({isMobile}: SideNavLinksProps) {
               href={link.href}
               className={clsx(
                 "group flex grow items-center font-sans text-base font-medium transition-all",
-                "hover:bg-gray-200 hover:text-black",
+                "hover:bg-gray-100 hover:text-black",
                 "dark:hover:bg-gray-800 dark:hover:text-white",
                 !isMobile && "gap-2 p-2 rounded-3xl",
                 isMobile && "gap-4 p-5 bg-white dark:bg-gray-950",
@@ -49,7 +49,7 @@ export default function SideNavLinks({isMobile}: SideNavLinksProps) {
                 <LinkIcon className={clsx(!isMobile && "w-4", isMobile && "w-6")} />
               </span>
               <p className="grow">{link.name}</p>
-              <ChevronRightIcon className="w-6" />
+              <ChevronRightIcon className="w-6 opacity-0 group-hover:opacity-100 transition-all" />
             </Link>
           </li>
         );
