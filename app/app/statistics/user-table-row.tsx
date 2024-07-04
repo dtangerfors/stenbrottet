@@ -1,6 +1,5 @@
 import { Booking, SortedBooking } from '@/app/lib/definitions';
 import { Transition, Disclosure } from '@headlessui/react';
-import { thisYear, previousYear } from './utils';
 import { ChevronDownIcon } from '@heroicons/react/16/solid';
 import { useEffect, useState } from 'react';
 import { showNiceDates } from "@/app/lib/functions";
@@ -17,8 +16,8 @@ export function UserTableRow({ bookings }: { bookings: Booking[] }) {
 
   return (
     <Disclosure as="div">
-      <div className="flex h-8 w-full items-center overflow-hidden rounded-xl bg-secondary-100 text-right font-medium leading-none text-secondary-700 dark:bg-secondary dark:text-secondary-800">
-        <span className="w-1/3 truncate px-4 text-left">
+      <div className="flex h-9 w-full items-center overflow-hidden rounded-xl bg-secondary-100 text-right font-medium leading-none text-secondary-700 dark:bg-secondary dark:text-secondary-800">
+        <span className="w-1/3 truncate px-4 text-left leading-9">
           {bookings[0].name}
         </span>
         <span className="flex-1 px-4">
@@ -28,7 +27,7 @@ export function UserTableRow({ bookings }: { bookings: Booking[] }) {
           {bookingsByYear[lastYear] ? bookingsByYear[lastYear].length : 0}
         </span>
         <span className="flex-1 px-4">{totalBookings}</span>
-        <Disclosure.Button className="grid h-8 w-8 place-items-center hover:bg-secondary/20 dark:hover:bg-white/20">
+        <Disclosure.Button className="grid size-9 place-items-center hover:bg-secondary/20 dark:hover:bg-white/20">
           <ChevronDownIcon className="w-4" />
         </Disclosure.Button>
       </div>

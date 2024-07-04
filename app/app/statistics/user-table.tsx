@@ -12,14 +12,15 @@ export function UserTable({bookings}: {bookings: Booking[]}) {
   const currentYear = new Date().getFullYear();
   const lastYear = new Date().getFullYear() - 1;
 
-  console.log(bookingsByUser)
-
   useEffect(() => {
     setBookingsByUser(sortBookingsByUserId(bookings));
   }, [bookings]);
 
   return (
-    <>
+    <div className="w-full mx-auto max-w-screen-md rounded-4xl bg-white p-3 pb-8 text-sm border border-gray-50 shadow-xl shadow-gray-700/10">
+      <div className="p-3">
+        <span className="font-serif text-2xl font-medium leading-tight text-primary">Bokningar per användare</span>
+      </div>
       <div className="flex px-4 text-right font-bold dark:text-white mb-2">
         <span className="w-1/3 text-left">Användare</span>
         <span className="flex-1">{currentYear}</span>
@@ -30,7 +31,7 @@ export function UserTable({bookings}: {bookings: Booking[]}) {
       <div className="flex flex-col gap-2">
         {Object.entries(bookingsByUser).map((bookings, i) => <UserTableRow key={`table-row-${i}`} bookings={bookings[1]} />)}
       </div>
-    </>
+    </div>
   );
 
   function sortBookingsByUserId(bookings: Booking[]): SortedBookings {

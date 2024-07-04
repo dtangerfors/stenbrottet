@@ -2,9 +2,12 @@ import { fetchBookings } from '@/app/lib/data';
 import { getDeviceType } from '@/app/lib/utils';
 import FixedHeader from '@/app/ui/layout/mobile-header';
 import { Tile } from './tile';
-import { thisYear, previousYear } from './utils';
+import { thisYear, previousYear, getTotalGuestsThisYear, getTotalDaysThisYear } from './utils';
 import { Section } from '@/app/ui/layout';
 import { UserTable } from "./user-table";
+import { CalendarDaysIcon, DocumentDuplicateIcon, TicketIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import { BookingChart } from "./booking-chart";
+import clsx from "clsx";
 
 export default async function StatisticsPage() {
   const { isMobile } = getDeviceType();
@@ -15,19 +18,33 @@ export default async function StatisticsPage() {
   return (
     <>
       {isMobile && <FixedHeader label="Statistik" />}
-      <section className="flex flex-col gap-6 p-3">
-        <div className="w-full mx-auto grid max-w-screen-sm grid-cols-3 gap-2 rounded-4xl bg-white p-3 border border-gray-50 shadow-xl shadow-gray-700/10">
-          <Tile number={bookings.length} text="Bokningar totalt" />
-          <Tile
-            number={bookings.filter(thisYear).length}
-            text={`Bokningar ${currentYear}`}
+      <section className="@container grid grid-cols-2 gap-6 max-lg:px-3 max-lg:py-6 pb-20 last:pb-24">
+        <div className={clsx(isMobile ? "flex gap-3 col-span-2 whitespace-nowrap overflow-auto snap-x snap-mandatory -mx-3 px-3 pb-10 -mb-10 scrollbar-hide" : "grid @2xl:grid-cols-2 @3xl:grid-cols-4 gap-6 col-span-2")}>
+          <Tile 
+            number={bookings.filter(thisYear).length} 
+            text={`Bokningar ${currentYear}`} 
+            icon={<TicketIcon />} 
           />
           <Tile
-            number={bookings.filter(previousYear).length}
-            text={`Bokningar ${lastYear}`}
+            number={getTotalGuestsThisYear(bookings)}
+            text={`Gäster ${currentYear}`}
+            icon={<UserGroupIcon />}
+          />
+          <Tile
+            number={getTotalDaysThisYear(bookings)}
+            text={`Bokade dagar ${currentYear}`}
+            icon={<CalendarDaysIcon />}
+          />
+          <Tile 
+            number={bookings.length} 
+            text={`Bokningar totalt`} 
+            icon={<DocumentDuplicateIcon />} 
           />
         </div>
-        <div className="w-full mx-auto max-w-screen-sm rounded-4xl bg-white p-3 py-8 text-sm border border-gray-50 shadow-xl shadow-gray-700/10">
+        <div className="col-span-full @2xl:col-span-1">
+          <BookingChart bookings={bookings} />
+        </div>
+        <div className="col-span-full @2xl:col-span-1">
           <UserTable bookings={bookings} />
         </div>
       </section>
