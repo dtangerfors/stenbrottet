@@ -48,12 +48,12 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
   };
 
   const onDrillDown = useCallback((newDate: Date) => {
-    setSelectedDate(newDate.toISOString().split('T')[0]);
+    setSelectedDate(newDate.toLocaleDateString());
     onOpen();
   }, [onOpen, setSelectedDate])
 
   return (
-   isLoaded ?  <Calendar
+   <Calendar
     culture="sv"
     localizer={localizer}
     views={["month"]}
@@ -63,7 +63,7 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
     onNavigate={onNavigate}
     eventPropGetter={eventStyleGetter}
     onDrillDown={onDrillDown}
-  /> : <p>Laddar ...</p>
+  />
    
   )
 

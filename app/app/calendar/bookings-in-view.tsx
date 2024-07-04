@@ -9,6 +9,6 @@ export function BookingsInView() {
 
   return (
     noBookings ?  <p className="m-auto block font-medium text-black dark:text-white text-center">Inga bokningar denna månad</p>
-    : <div className="flex flex-col gap-3 w-full">{bookingsThisMonth.map((booking) => <BookedEvent key={booking.id} booking={booking} />)}</div>
+    : <div className="flex flex-col gap-3 w-full @lg:grid @lg:grid-cols-2 @3xl:grid-cols-3">{bookingsThisMonth.map((booking) => <BookedEvent key={booking.id} booking={booking} />)}</div>
   )
 }
