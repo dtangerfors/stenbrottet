@@ -31,6 +31,11 @@ const inputStyling = {
   inputWrapper: "bg-white border border-gray-200 shadow-xl shadow-gray-700/10 data-[hover=true]:bg-default-50",
 };
 
+const calendarStyling = {
+  calendar: "bg-white",
+  gridHeader: "shadow-none border-b border-gray-200"
+}
+
 export function BookingForm() {
   const {selectedDate} = useAppContext();
 
@@ -107,6 +112,7 @@ export function BookingForm() {
                 label="Ankomst"
                 size="lg"
                 className="*:border *:border-gray-200 *:bg-white *:shadow-xl *:shadow-gray-700/10 *:hover:bg-default-50"
+                classNames={calendarStyling}
               />
             )}
           </Field>
@@ -120,6 +126,7 @@ export function BookingForm() {
                 label="Avfärd"
                 size="lg"
                 className="*:border *:border-gray-200 *:bg-white *:shadow-xl *:shadow-gray-700/10 *:hover:bg-default-50"
+                classNames={calendarStyling}
               />
             )}
           </Field>
