@@ -98,10 +98,25 @@ const config: Config = {
   darkMode: "class",
   plugins: [
     require("@headlessui/tailwindcss")({ prefix: "ui" }),
+    require("@tailwindcss/container-queries"),
     nextui({
       themes: {
         light: {
           colors: {
+            primary: {
+              DEFAULT: "#6ec261",
+              "50": "#f3fbf2",
+              "100": "#e5f6e2",
+              "200": "#ccecc6",
+              "300": "#a2dc99",
+              "400": "#6ec261",
+              "500": "#4ca83f",
+              "600": "#3a8a2f",
+              "700": "#306d28",
+              "800": "#2a5724",
+              "900": "#23481f",
+              "950": "#0e270c",
+            },
             default: {
               "50": "#f2f3f2",
               "100": "#e2e5e2",

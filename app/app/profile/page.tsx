@@ -6,10 +6,12 @@ import { BookingStatistics } from './booking-stats';
 import Card from '@/app/ui/booking_card';
 import { TabbedBookings } from './tabbed-bookings';
 import { Section } from '@/app/ui/layout';
+import { auth } from "@/auth";
 
 export default async function Profile() {
-  const user = await getUser("00e5ea9c-803e-4665-9a74-b84f3336bdf5");
-  const bookings = await fetchUserBookings("00e5ea9c-803e-4665-9a74-b84f3336bdf5");
+  const authData = await auth();
+  const user = await getUser(authData!.user!.id as string);
+  const bookings = await fetchUserBookings(authData!.user!.id as string);
   const {isMobile} = getDeviceType(); 
 
   return (

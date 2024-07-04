@@ -22,3 +22,21 @@ export const showNiceDates = (arrivalStr: Date, departureStr: Date) => {
 
   return str;
 };
+
+export const showGuests = (guests: number) => {
+  let word = "gäster";
+
+  if (guests <= 1) word = "gäst";
+
+  return `${guests} ${word}`;
+};
+
+export const getRoomName = (rooms: any[]) => {
+  if (!rooms) return "Inga rum valda";
+  const roomArr: any[] = [];
+  rooms.forEach((room) => {
+    roomArr.push(room.name);
+  });
+
+  return roomArr.join(", ");
+};

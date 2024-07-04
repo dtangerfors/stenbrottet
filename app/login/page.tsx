@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import LoginForm from "./login-form";
 
 export default function Page() {
   return (
@@ -11,10 +11,17 @@ export default function Page() {
         <div className="relative z-10 mb-6 max-lg:my-auto">
           <h1 className="font-serif font-semibold text-3xl text-white lg:text-primary">Stenbrottsvägen</h1>
         </div>
-        <div className="relative z-10 w-full max-w-md bg-white rounded-t-[40px] mx-auto p-6">
-          <Link href={"/login"} className="btn-primary btn-lg block w-full text-center">Logga in</Link>
-          <div className="py-6 md:pt-12 md:pb-0 text-center">
-            <p className="font-sans font-normal text-primary-950">Inget konto än? <a href="/" className="font-bold text-secondary">Skapa konto!</a></p>
+        <div className="relative z-10 flex flex-col gap-6  w-full max-w-md bg-white rounded-t-[40px] mx-auto p-6">
+          <LoginForm />
+
+          <div className="flex gap-8 items-center">
+            <span className="h-px flex-1 bg-gray-200"></span>
+            <span className="font-sans text-gray-500">eller</span>
+            <span className="h-px flex-1 bg-gray-200"></span>
+          </div>
+
+          <div className="w-full">
+            <button className="btn-tertiary btn-lg w-full">Logga in med Google</button>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import {
 } from "@heroicons/react/24/solid";
 import {ArrowRightStartOnRectangleIcon as SignOutDesktop} from "@heroicons/react/16/solid"
 import { getData } from "@/app/lib/data";
+import { signOut } from "@/auth";
 
 export default async function SideNav({
   isMobile,
@@ -25,7 +26,12 @@ export default async function SideNav({
       <SideNavLinks isMobile={isMobile} />
       <div className="mt-auto">
 
-      <form className={clsx("w-full")}>
+      <form 
+        action={async () => {
+          "use server";
+          await signOut();
+        }}
+        className={clsx("w-full")}>
         <hr className="mx-6 mb-6" />
         <button
           className={clsx(

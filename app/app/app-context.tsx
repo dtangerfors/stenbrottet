@@ -16,7 +16,7 @@ const AppContext = createContext<AppContextProps>({} as AppContextProps);
 
 export default function AppProvider({children}: {children: React.ReactNode}) {
   const {isOpen, onOpen, onClose, onOpenChange} = useDisclosure();
-  const currentDate = new Date().toISOString().split('T')[0];
+  const currentDate = new Date().toLocaleDateString();
   const [selectedDate, setSelectedDate] = useState<string>(currentDate);
 
   return (

@@ -5,8 +5,12 @@ import { getDeviceType } from "../lib/utils";
 import { MobileNav } from "../ui/dashboard/mobile-nav";
 import AppProvider from "./app-context";
 import { ModalContainer } from "../ui/modal";
+import { auth } from "@/auth";
+import { getUser, getUserByEmail } from "../lib/data";
+import { useUserContext } from "../context/user-context";
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+
+export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const { isMobile } = getDeviceType();
 
   return (
@@ -29,3 +33,4 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     </AppProvider>
   );
 }
+

@@ -43,16 +43,18 @@ export default async function Home() {
             <h2 className="mb-6 font-serif text-2xl font-semibold text-primary max-lg:text-center lg:text-4xl">
               Senaste bokningar
             </h2>
-            <div className="flex flex-col gap-3 md:flex-row">
-              {bookings
-                .reverse()
-                .slice(0, 3)
-                .map((booking, i) => (
-                  <SmallBookingCard
+            <div className="@container">
+              <div className="flex flex-col gap-3 @3xl:flex-row">
+                {bookings
+                  .reverse()
+                  .slice(0, 3)
+                  .map((booking, i) => (
+                    <SmallBookingCard
                     key={`latest-bookings-${i}`}
                     booking={booking}
-                  />
-                ))}
+                    />
+                  ))}
+              </div>
             </div>
         </Section>
         <Section bgColor="max-lg:bg-gray-50">
