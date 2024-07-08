@@ -17,7 +17,7 @@ export function ModalContainer() {
         className="bg-transparent m-0 shadow-none border-none"
         classNames={{
           backdrop: "bg-white/80 backdrop-blur-lg",
-          body: "p-6 w-full max-w-screen-sm m-auto",
+          body: "py-6 px-4 w-full max-w-screen-sm m-auto",
           base: "h-svh max-h-none",
           header: "bg-offwhite border-b border-gray-100"
         }}
