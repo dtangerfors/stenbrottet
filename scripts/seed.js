@@ -54,10 +54,10 @@ async function seedBookings(client) {
     updated_at BIGINT NOT NULL,
     user_id UUID NOT NULL,
     name VARCHAR(255) NOT NULL,
-    arrival BIGINT NOT NULL,
-    departure BIGINT NOT NULL,
+    travel_dates JSONB NOT NULL,
     guests INTEGER NOT NULL,
-    rooms JSONB NOT NULL,
+    guests_children INTEGER,
+    rooms text[],
     message TEXT
   );
 `;
@@ -68,11 +68,12 @@ async function seedBookings(client) {
     const insertedBookings = await Promise.all(
       bookings.map(
         (booking) => {
-          const roomsJsonb = JSON.stringify(booking.rooms.map(([roomId, roomName]) => ({ id: roomId, name: roomName })));
+          const roomsJsonb = JSON.stringify(booking.rooms).replace("[", "{").replace("]", "}");
+          const travel_dates = JSON.stringify(booking.travelDates);
 
           return client.sql`
-        INSERT INTO bookings (id, created_at, updated_at, user_id, name, arrival, departure, guests, rooms, message)
-        VALUES (${booking.id}, ${booking.created_at}, ${booking.updated_at}, ${booking.user_id}, ${booking.name}, ${booking.arrival}, ${booking.departure}, ${booking.guests}, ${roomsJsonb}, ${booking.message})
+        INSERT INTO bookings (id, created_at, updated_at, user_id, name, travel_dates, guests, guests_children, rooms, message)
+        VALUES (${booking.key}, ${booking.created_at}, ${booking.updated_at}, ${booking.user_id}, ${booking.name}, ${travel_dates}, ${booking.guests}, ${booking.guestsChildren}, ${roomsJsonb}, ${booking.message})
         ON CONFLICT (id) DO NOTHING;
       `},
       ),
@@ -93,7 +94,7 @@ async function seedBookings(client) {
 async function main() {
   const client = await db.connect();
 
-  await seedUsers(client);
+  // await seedUsers(client);
   await seedBookings(client);
 
   await client.end();

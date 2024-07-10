@@ -6,25 +6,15 @@ import {
   Input,
   Textarea,
   Checkbox,
-  DatePicker,
-  DateValue,
   CheckboxGroup,
+  Select,
+  SelectItem,
+  DateRangePicker
 } from "@nextui-org/react";
-import { rooms } from "./rooms";
+import { I18nProvider } from "@react-aria/i18n";
+import { rooms, guests } from "./form-options";
 import { useAppContext } from "@/app/app/app-context";
-
-interface FormValues {
-  name: string;
-  guests: string;
-  arrival: DateValue;
-  departure: DateValue;
-  message: string;
-  user_id: string;
-  rooms: string[];
-  created_at: number;
-  updated_at: number;
-  key: string;
-}
+import { BookingFormValues } from "../lib/definitions";
 
 const inputStyling = {
   innerWrapper: "bg-transparent",
@@ -33,7 +23,15 @@ const inputStyling = {
 
 const calendarStyling = {
   calendar: "bg-white",
-  gridHeader: "shadow-none border-b border-gray-200"
+  gridHeader: "shadow-none border-b border-gray-200",
+  separator: "mx-0",
+}
+
+const selectStyling = {
+  base: "items-center mb-4 pt-4 last:mb-0",
+  label: "flex-1",
+  mainWrapper: "w-24",
+  trigger: "bg-gray-50 data-[hover=true]:bg-gray-100"
 }
 
 export function BookingForm() {
@@ -41,20 +39,24 @@ export function BookingForm() {
 
   const initialValues = {
     name: "Daniel Tängerfors",
-    guests: "1",
-    arrival: parseDate(selectedDate),
-    departure: parseDate(selectedDate).add({weeks: 1}),
-    rooms: ["room-4"],
+    guests: 0,
+    guestsChildren: 0,
+    travelDates: {
+      start: parseDate(selectedDate),
+      end: parseDate(selectedDate).add({weeks: 1}),
+    },
+    rooms: [],
     message: "",
-    created_at: 1,
-    updated_at: 1,
+    created_at: Date.now(),
+    updated_at: Date.now(),
     key: "",
     user_id: "",
   };
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Vänligen ange ett namn"),
-    guests: Yup.string().required("Minst en person"),
+    guests: Yup.number().min(1, "Minst en person"),
+    guestsChildren: Yup.number(),
     arrival: Yup.date(),
     departure: Yup.date(),
     rooms: Yup.array().min(1, "Välj minst ett rum"),
@@ -65,7 +67,7 @@ export function BookingForm() {
     user_id: Yup.string(),
   });
 
-  const onSubmit = (values: FormValues) => {
+  const onSubmit = (values: BookingFormValues) => {
     console.log("Form data", values);
   };
 
@@ -75,7 +77,7 @@ export function BookingForm() {
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {({ values, setFieldValue }) => (
+      {({ values, setFieldValue, errors, touched }) => (
         <Form className="flex flex-col gap-4">
           <Field name="name">
             {({ field }: {field: FieldProps["field"]}) => (
@@ -85,49 +87,63 @@ export function BookingForm() {
                 size="lg"
                 radius="lg"
                 classNames={inputStyling}
+                isInvalid={!errors.name || !touched.name ? false : true}
+                errorMessage={errors.name}
               />
             )}
           </Field>
 
-          <Field name="guests">
-            {({ field }: {field: FieldProps["field"]}) => (
-              <Input
-                {...field}
-                type="number"
-                inputMode="tel"
-                label="Antal gäster"
-                size="lg"
-                radius="lg"
-                classNames={inputStyling}
-              />
-            )}
-          </Field>
+          <div className="bg-white border border-gray-200 shadow-xl shadow-gray-700/10 p-3 rounded-large">
+            <p className="relative text-medium text-foreground-500">Vem följer med?</p>
 
-          <Field name="arrival">
-            {({ field }: {field: FieldProps["field"]}) => (
-              <DatePicker
-                {...field}
-                value={values.arrival}
-                onChange={(newValues) => setFieldValue(field.name, newValues)}
-                label="Ankomst"
-                size="lg"
-                className="*:border *:border-gray-200 *:bg-white *:shadow-xl *:shadow-gray-700/10 *:hover:bg-default-50"
-                classNames={calendarStyling}
-              />
-            )}
-          </Field>
+            <div className="divide-y divide-gray-200">
+              <Field name="guests">
+                {({ field }: {field: FieldProps["field"]}) => (
+                  <Select 
+                    label="Vuxna" 
+                    {...field} 
+                    selectedKeys={[field.value]} 
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFieldValue(field.name, e.target.value)}
+                    labelPlacement="outside-left" 
+                    classNames={selectStyling}
+                    isInvalid={!errors.guests || !touched.guests ? false : true}
+                    errorMessage={errors.guests}
+                  >
+                    {guests.map(guest => <SelectItem key={guest.key}>{guest.label}</SelectItem>)}
+                  </Select>
+                )}
+              </Field>
 
-          <Field name="departure">
+              <Field name="guestsChildren">
+                {({ field }: {field: FieldProps["field"]}) => (
+                  <Select 
+                    label="Barn (Upp till tolv år)" 
+                    {...field} 
+                    selectedKeys={[field.value]} 
+                    onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFieldValue(field.name, e.target.value)}
+                    labelPlacement="outside-left" 
+                    classNames={selectStyling}>
+                  {guests.map(guest => <SelectItem key={guest.key}>{guest.label}</SelectItem>)}
+                </Select>
+                )}
+              </Field>
+              
+            </div>
+          </div>
+
+          <Field name="travelDates">
             {({ field }: {field: FieldProps["field"]}) => (
-              <DatePicker
-                {...field}
-                value={values.departure}
-                onChange={(newValues) => setFieldValue(field.name, newValues)}
-                label="Avfärd"
-                size="lg"
-                className="*:border *:border-gray-200 *:bg-white *:shadow-xl *:shadow-gray-700/10 *:hover:bg-default-50"
-                classNames={calendarStyling}
-              />
+              <I18nProvider locale="sv-SE">
+                <DateRangePicker
+                  {...field}
+                  value={values.travelDates}
+                  onChange={(newValues) => setFieldValue(field.name, newValues)}
+                  label="Resedatum"
+                  size="lg"
+                  className="*:border *:border-gray-200 *:bg-white *:shadow-xl *:shadow-gray-700/10 *:hover:bg-default-50"
+                  classNames={calendarStyling}
+                    />
+              </I18nProvider>
             )}
           </Field>
 
@@ -142,6 +158,8 @@ export function BookingForm() {
                 classNames={{
                   wrapper: "grid grid-cols-2 gap-x-4 sm:grid-cols-3"
                 }}
+                isInvalid={!errors.rooms || !touched.rooms ? false : true}
+                errorMessage={errors.rooms}
               >
                 {rooms.map((room) => (
                   <Checkbox
