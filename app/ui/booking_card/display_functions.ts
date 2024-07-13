@@ -14,8 +14,8 @@ const showDate = (timeStr: string) => {
 };
 
 const bookedDates = (arrivalStr: string, departureStr: string) => {
-  const arrivalEvent = new Date(parseInt(arrivalStr));
-  const departureEvent = new Date(parseInt(departureStr));
+  const arrivalEvent = new Date(arrivalStr);
+  const departureEvent = new Date(departureStr);
   let str = "Inget datum satt";
 
   const arrival = {

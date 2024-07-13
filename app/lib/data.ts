@@ -17,7 +17,8 @@ export async function fetchBookings() {
 
     const data = await sql<Booking>`SELECT bookings.*, users.user_color
     FROM bookings
-    JOIN users ON bookings.user_id = users.id;`;
+    JOIN users ON bookings.user_id = users.id
+    ORDER BY created_at ASC;`;
 
     // console.log('Data fetch completed after 3 seconds.');
 

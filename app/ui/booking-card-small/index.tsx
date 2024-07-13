@@ -1,9 +1,9 @@
+"use client"
 import { Booking } from '@/app/lib/definitions';
-import { showNiceDates } from '@/app/lib/functions';
+import { showGuests, showNiceDates } from '@/app/lib/functions';
+import {CalendarDate, getLocalTimeZone, parseDate} from '@internationalized/date';
 
 export const SmallBookingCard = ({ booking }: { booking: Booking }) => {
-  const arrival = new Date(parseInt(booking.arrival));
-  const departure = new Date(parseInt(booking.departure));
 
   return (
     <div className="flex grow gap-1 rounded-2xl bg-white p-4 pl-0 border border-gray-50 shadow-xl shadow-gray-700/10 overflow-hidden">
@@ -16,7 +16,7 @@ export const SmallBookingCard = ({ booking }: { booking: Booking }) => {
           {booking.name}
         </p>
         <p className="font-sans font-regular text-primary-900/80 dark:text-primary-100">
-          {showNiceDates(arrival, departure)} • {booking.guests} gäster
+          {showNiceDates(booking.travel_dates)} • {showGuests(booking.guests, booking.guestsChildren).total}
         </p>
       </div>
     </div>

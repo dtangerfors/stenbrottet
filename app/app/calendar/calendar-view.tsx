@@ -21,8 +21,8 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
     bookings.forEach((booking: Booking) => {
       bookingsToState.push({
         title: booking.name,
-        start: new Date(parseInt(booking.arrival)),
-        end: new Date(parseInt(booking.departure)),
+        start: new Date(booking.travel_dates.start),
+        end: new Date(booking.travel_dates.end),
         ...booking,
       })
     })

@@ -7,6 +7,7 @@ import Card from '@/app/ui/booking_card';
 import { TabbedBookings } from './tabbed-bookings';
 import { Section } from '@/app/ui/layout';
 import { auth } from "@/auth";
+import { BookingTable } from "./booking-table";
 
 export default async function Profile() {
   const authData = await auth();
@@ -39,7 +40,7 @@ export default async function Profile() {
         </div>
         <Section pt="small">
           <div className="flex flex-col gap-2">
-            <TabbedBookings bookings={bookings} />
+            <BookingTable bookings={bookings} />
           </div>
         </Section>
       </div>

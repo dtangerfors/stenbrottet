@@ -16,7 +16,7 @@ export type BookingFormValues = {
   name: string;
   guests: number;
   guestsChildren: number;
-  travelDates: {
+  travel_dates: {
     start: DateValue,
     end: DateValue
   },
@@ -25,21 +25,24 @@ export type BookingFormValues = {
   rooms: string[];
   created_at: number;
   updated_at: number;
-  key: string;
+  id: string;
 }
 
 export type Booking = {
-  id: string,
-  arrival: string,
-  departure: string,
-  guests: number,
-  message: string,
-  name: string,
-  user_id: string,
-  created_at: string,
-  updated_at: string,
-  rooms: [],
-  user_color: string,
+  name: string;
+  guests: number;
+  guestsChildren: number;
+  travel_dates: {
+    start: string,
+    end: string
+  },
+  message: string;
+  user_id: string;
+  rooms: string[];
+  created_at: number;
+  updated_at: number;
+  user_color: string;
+  id: string;
 }
 
 export type BookingEvent = {

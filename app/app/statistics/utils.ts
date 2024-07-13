@@ -1,13 +1,13 @@
 import { Booking, SortedBooking } from "@/app/lib/definitions";
 
 function thisYear(booking: Booking) {
-  const bookingCreated = new Date(parseInt(booking.arrival)).getFullYear();
+  const bookingCreated = new Date(booking.travel_dates.start).getFullYear();
   const thisYear = new Date().getFullYear();
   return bookingCreated == thisYear;
 }
 
 function previousYear(booking: Booking) {
-  const bookingCreated = new Date(parseInt(booking.arrival)).getFullYear();
+  const bookingCreated = new Date(booking.travel_dates.start).getFullYear();
   const previousYear = new Date().getFullYear() - 1;
   return bookingCreated == previousYear;
 }
@@ -26,7 +26,7 @@ function getTotalDaysThisYear(bookings: Booking[]) {
   const bookingsThisYear = bookings.filter(thisYear);
 
   bookingsThisYear.forEach(booking => {
-    const daysForThisBooking = totalDays(booking.arrival, booking.departure)
+    const daysForThisBooking = totalDays(booking.travel_dates.start, booking.travel_dates.end)
 
     totalDaysThisYear += daysForThisBooking
   })
@@ -36,8 +36,8 @@ function getTotalDaysThisYear(bookings: Booking[]) {
 
 function totalDays(arrival: string, departure: string) {
   const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-  const firstDate = new Date(parseInt(arrival)).valueOf();
-  const secondDate = new Date(parseInt(departure)).valueOf();
+  const firstDate = new Date(arrival).valueOf();
+  const secondDate = new Date(departure).valueOf();
 
   return Math.round(Math.abs((firstDate - secondDate) / oneDay));
 }
@@ -46,7 +46,7 @@ function sortBookingsByYear(bookings: Booking[]) {
   const bookingsByYear: SortedBooking = {};
 
   bookings.forEach((booking) => {
-    const year = new Date(parseInt(booking.arrival)).getFullYear();
+    const year = new Date(booking.travel_dates.start).getFullYear();
 
     if (!bookingsByYear[year]) {
       bookingsByYear[year] = [];

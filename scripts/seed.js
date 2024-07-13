@@ -69,7 +69,7 @@ async function seedBookings(client) {
       bookings.map(
         (booking) => {
           const roomsJsonb = JSON.stringify(booking.rooms).replace("[", "{").replace("]", "}");
-          const travel_dates = JSON.stringify(booking.travelDates);
+          const travel_dates = JSON.stringify(booking.travel_dates);
 
           return client.sql`
         INSERT INTO bookings (id, created_at, updated_at, user_id, name, travel_dates, guests, guests_children, rooms, message)

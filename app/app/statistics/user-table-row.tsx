@@ -51,7 +51,7 @@ export function UserTableRow({ bookings }: { bookings: Booking[] }) {
     const groupedBookings: SortedBooking = {};
 
     bookings.forEach((booking) => {
-      const year = new Date(parseInt(booking.arrival)).getFullYear();
+      const year = new Date(booking.travel_dates.start).getFullYear();
 
       if (!groupedBookings[year]) {
         groupedBookings[year] = [];
@@ -69,7 +69,7 @@ function RowsByYear({data}: { data:  Booking[] }) {
     <div className="text-s col-span-full mb-8 w-full first:mt-4 last:mb-12">
       <div className="flex px-4 text-right font-bold dark:text-white">
         <span className="w-1/3 text-left">
-          {new Date(parseInt(data[0].arrival)).getFullYear()}
+          {new Date(data[0].travel_dates.start).getFullYear()}
         </span>
         <span className="flex-1">Antal dagar</span>
         <span className="flex-1">Antal gäster</span>
@@ -80,10 +80,10 @@ function RowsByYear({data}: { data:  Booking[] }) {
           className="dark:bg-black-700 mb-1 flex w-full rounded-xl bg-gray-50 py-1.5 px-4 text-xs text-right text-black dark:text-white/70"
         >
           <span className="flex-1 text-left">
-            {showNiceDates(new Date(parseInt(booking.arrival)), new Date(parseInt(booking.departure)))}
+            {showNiceDates(booking.travel_dates)}
           </span>
           <span className="flex-1">
-            {totalDays(booking.arrival, booking.departure)}
+            {totalDays(booking.travel_dates.start, booking.travel_dates.end)}
           </span>
           <span className="flex-1">{booking.guests}</span>
         </div>
@@ -92,8 +92,8 @@ function RowsByYear({data}: { data:  Booking[] }) {
   );
   function totalDays(arrival: string, departure: string) {
     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    const firstDate = new Date(parseInt(arrival)).valueOf();
-    const secondDate = new Date(parseInt(departure)).valueOf();
+    const firstDate = new Date(arrival).valueOf();
+    const secondDate = new Date(departure).valueOf();
   
     return Math.round(Math.abs((firstDate - secondDate) / oneDay));
   }

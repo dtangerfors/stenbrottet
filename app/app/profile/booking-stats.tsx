@@ -41,7 +41,7 @@ function Subtitle({text}: {text: string}) {
 function getTotalBookings(bookings: Booking[], thisYear: number) {
 
   const bookingsThisYear = bookings.filter(booking => {
-    const bookingYear = new Date(parseInt(booking.departure)).getFullYear();
+    const bookingYear = new Date(booking.travel_dates.end).getFullYear();
     return bookingYear === thisYear;
   });
 
@@ -53,7 +53,7 @@ function getTotalGuests(bookings: Booking[], thisYear: number) {
   let totalGuests = 0;
 
   const bookingsThisYear = bookings.filter(booking => {
-    const bookingYear = new Date(parseInt(booking.departure)).getFullYear();
+    const bookingYear = new Date(booking.travel_dates.end).getFullYear();
     return bookingYear === thisYear;
   });
 
@@ -68,14 +68,14 @@ function getTotalDays(bookings: Booking[], thisYear: number) {
   let totalDays = 0;
 
   const bookingsThisYear = bookings.filter(booking => {
-    const bookingYear = new Date(parseInt(booking.departure)).getFullYear();
+    const bookingYear = new Date(booking.travel_dates.end).getFullYear();
     return bookingYear === thisYear;
   });
 
   bookingsThisYear.forEach(booking => {
     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    const firstDate = parseInt(booking.arrival);
-    const secondDate = parseInt(booking.departure);
+    const firstDate = new Date(booking.travel_dates.start).getTime();
+    const secondDate = new Date(booking.travel_dates.end).getTime();
 
     const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 

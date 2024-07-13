@@ -29,7 +29,7 @@ export const TabbedBookings = ({ bookings }: { bookings: Booking[] }) => {
                 key={`tab-panel-${bookingYear.year}`}
                 className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 flex-wrap gap-3"
               >
-                {bookingYear.booking.sort((a, b) => parseInt(b.departure) - parseInt(a.departure)).map((booking, i) => (
+                {bookingYear.booking.sort((a, b) => new Date(b.travel_dates.end).getTime() - new Date(a.travel_dates.end).getTime()).map((booking, i) => (
                   <Card key={`booking-${bookingYear}-${i}`} booking={booking} />
                 ))}
               </Tab.Panel>
@@ -45,7 +45,7 @@ function sortBookingsByYear(bookings: Booking[]) {
   const groupedBookings: SortedBooking = {};
 
   bookings.forEach((booking) => {
-    const year = new Date(parseInt(booking.arrival)).getFullYear();
+    const year = new Date(booking.travel_dates.start).getFullYear();
 
     if (!groupedBookings[year]) {
       groupedBookings[year] = [];
