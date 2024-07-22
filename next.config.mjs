@@ -4,9 +4,6 @@ import withPWA from 'next-pwa';
 const nextConfig = { 
   reactStrictMode: true,  
   swcMinify: true,
-  compiler: {
-    removeConsole: process.env.NODE_ENV !== "development"     // Remove console.log in production
-  },
   images: {
     remotePatterns: [
       {
