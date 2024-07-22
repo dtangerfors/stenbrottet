@@ -47,7 +47,7 @@ const Weather = ({lat, lon}: {lat: string, lon: string}) => {
          setCurrentForecastObj(data)
          setIsLoaded(true)
       })
-   }, [])
+   }, [lat, lon])
 
    return (
       isLoaded ?

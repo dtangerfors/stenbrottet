@@ -15,7 +15,6 @@ export default async function SideNav({
 }) {
   const authData = await auth();
   const user = await getUser(authData!.user!.id as string);
-  const release = await getData("https://api.github.com/repos/dtangerfors/stenbrottet/releases");
 
   return (
     <div
@@ -56,9 +55,7 @@ export default async function SideNav({
           <ChevronRightIcon className="w-6 opacity-0 group-hover:opacity-100 transition-all" />
         </button>
       </form>
-      <div className="text-center mt-3">
-        <span className="text-sm text-gray-500 font-medium">Version {release[0].tag_name} • {new Date(release[0].published_at).toLocaleDateString()}</span>
-      </div>
+      
       </div>
     </div>
   );

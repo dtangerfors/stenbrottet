@@ -45,7 +45,7 @@ const Card = ({booking, userIsLoggedIn, isUpdatingBooking}: {booking: Booking, u
         <div className="flex justify-between items-center w-full">
           <Label>
             <i className="ri-history-line align-text-top"></i>{" "}
-            {showDate(booking.created_at)}
+            {showDate(booking.created_at.toString())}
           </Label>
           {userIsLoggedIn && (
             <div className="flex">

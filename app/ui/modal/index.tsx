@@ -1,6 +1,5 @@
 "use client"
 import { useAppContext } from "@/app/app/app-context";
-import { BookingForm } from "@/app/form";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@nextui-org/react";
 
 export function ModalContainer() {
@@ -29,7 +28,6 @@ export function ModalContainer() {
             <>
               <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
               <ModalBody>
-                <BookingForm />
               </ModalBody>
               
             </>
