@@ -16,7 +16,7 @@ export const SmallBookingCard = ({ booking }: { booking: Booking }) => {
           {booking.name}
         </p>
         <p className="font-sans font-regular text-primary-900/80 dark:text-primary-100">
-          {showNiceDates(booking.travel_dates)} • {showGuests(booking.guests, booking.guestsChildren).total}
+          {showNiceDates(booking.travel_dates)} • {showGuests(booking.guests, booking.guests_children).total}
         </p>
       </div>
     </div>

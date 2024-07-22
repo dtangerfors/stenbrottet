@@ -44,8 +44,9 @@ export const {auth, signIn, signOut} = NextAuth({
       const user: User | undefined = await getUser(session.user.email);
       session.userId = user!.id;
       session.user.id = user!.id;
+      session.user.role = user!.user_role
 
-      return session
+      return session;
     }
   }
 })

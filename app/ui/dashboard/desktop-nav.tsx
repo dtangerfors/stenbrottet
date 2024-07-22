@@ -20,7 +20,7 @@ export const DesktopNav = () => {
       </Link>
       <NavLinks />
       <div className="ml-auto">
-        <button type="button" onClick={onOpen} className="btn-primary btn-sm"><span>Lägg in bokning</span></button>
+        <Link href={"/app/booking/create"} className="btn-primary btn-sm"><span>Lägg in bokning</span></Link>
       </div>
       </div>
     </div>

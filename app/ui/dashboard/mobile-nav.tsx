@@ -16,6 +16,7 @@ import { useAppContext } from "@/app/app/app-context";
 const links = [
   { name: "Hem", href: "/app", icon: HomeIcon },
   { name: "Kalender", href: "/app/calendar", icon: CalendarIcon },
+  { name: "Lägg in bokning", href: "/app/booking/create", icon: PlusIcon },
   { name: "Profil", href: "/app/profile", icon: UserIcon },
   { name: "Meny", href: "/app/menu", icon: Bars3Icon },
 ];
@@ -26,20 +27,7 @@ export const MobileNav = ({}) => {
 
   return (
     <ul className={clsx("flex w-full gap-2")}>
-      <li className="flex-1"><NavLink link={links[0]}/></li>
-      <li className="flex-1"><NavLink link={links[1]}/></li>
-      <li className="flex-1">
-        <Button 
-          onPress={onOpen} 
-          aria-label="Lägg till bokning"
-          isIconOnly 
-          radius="full" 
-          variant="light" 
-          className="w-full flex h-auto py-4 text-base font-medium hover:text-black">
-          <PlusIcon className="w-6 block text-gray-500 dark:text-white"/>
-        </Button></li>
-      <li className="flex-1"><NavLink link={links[2]}/></li>
-      <li className="flex-1"><NavLink link={links[3]}/></li>
+      {links.map((link, i) => <li key={`link-${i}`} className="flex-1"><NavLink link={link}/></li>)}
     </ul>
   );
 };

@@ -6,7 +6,7 @@ import { fetchBookings } from "@/app/lib/data";
 import CalendarProvider from "./context";
 import { CalendarView } from "./calendar-view";
 import { BookingsInView } from "./bookings-in-view";
-import { CalendarSkeleton } from "@/app/ui/skeletons";
+import { BookingEventSkeleton, CalendarSkeleton } from "@/app/ui/skeletons";
 
 export default async function Calendar() {
   const {isMobile} = getDeviceType(); 
@@ -24,7 +24,9 @@ export default async function Calendar() {
           </Suspense>
 
           <div className={clsx("@container relative grow flex max-laptop:bg-offwhite p-6 @4xl:pl-0 dark:bg-gray-950 transition-all", isMobile && "pb-24")}>
-            <BookingsInView />
+            <Suspense fallback={<BookingEventSkeleton />}>
+              <BookingsInView />
+            </Suspense>
           </div>
         </div>
       </div>

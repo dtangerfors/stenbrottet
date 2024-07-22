@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { useCalendarContext } from "@/app/app/calendar/context";
 import { Booking, BookingEvent } from "@/app/lib/definitions";
 import { Calendar, DateLocalizer, dateFnsLocalizer } from "react-big-calendar"
@@ -11,10 +12,11 @@ import "./calendar-styles.css";
 import { useAppContext } from "@/app/app/app-context";
 
 export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobile: RegExpMatchArray | null}) {
+  const router = useRouter();
   const [events, setEvents] = useState<BookingEvent[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const { setCurrentMonth, setBookingsThisMonth } = useCalendarContext();
-  const {onOpen, setSelectedDate} = useAppContext();
+  const { setSelectedDate } = useAppContext();
 
   useEffect(() => {
     const bookingsToState: BookingEvent[] = [];
@@ -49,8 +51,8 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
 
   const onDrillDown = useCallback((newDate: Date) => {
     setSelectedDate(newDate.toLocaleDateString());
-    onOpen();
-  }, [onOpen, setSelectedDate])
+    router.push("/app/booking/create");
+  }, [setSelectedDate, router])
 
   return (
    <Calendar

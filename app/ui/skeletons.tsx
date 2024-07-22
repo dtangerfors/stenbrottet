@@ -13,3 +13,13 @@ export function CalendarSkeleton() {
     </div>
   )
 }
+
+export function BookingEventSkeleton() {
+  return (
+    <div className="flex flex-col gap-3 w-full @lg:grid @lg:grid-cols-2 @3xl:grid-cols-3">
+      <div className="h-20 rounded-lg bg-gray-100 animate-pulse"></div>
+      <div className="h-20 rounded-lg bg-gray-100 animate-pulse"></div>
+      <div className="h-20 rounded-lg bg-gray-100 animate-pulse"></div>
+    </div>
+  )
+}
