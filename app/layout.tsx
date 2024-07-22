@@ -33,8 +33,13 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Stenbrottsvägen',
+  title: 'Stenbrottsvägen 3',
   appleWebApp: { statusBarStyle: 'black-translucent' },
+  manifest: "/manifest.json",
+  icons: [
+    { rel: "apple-touch-icon", url: "icons/apple-touch-icon.png" },
+    { rel: "icon", url: "icons/icon-144x144.png" },
+  ],
 };
 
 export const viewport: Viewport = {
