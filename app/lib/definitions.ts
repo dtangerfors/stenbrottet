@@ -10,28 +10,33 @@ export type User = {
   name: string;
   email: string;
   password: string;
+  user_color: string;
+  user_role: string;
 };
+
+export type UpdateUserForm = {
+  user_role: string;
+  id: string;
+}
 
 export type BookingFormValues = {
   name: string;
-  guests: number;
-  guestsChildren: number;
+  guests: string;
+  guests_children: string;
   travel_dates: {
-    start: DateValue,
-    end: DateValue
+    start: DateValue | string,
+    end: DateValue | string
   },
   message: string;
   user_id: string;
   rooms: string[];
-  created_at: number;
-  updated_at: number;
-  id: string;
+  id?: string;
 }
 
 export type Booking = {
   name: string;
   guests: number;
-  guestsChildren: number;
+  guests_children: number;
   travel_dates: {
     start: string,
     end: string

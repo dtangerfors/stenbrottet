@@ -1,5 +1,5 @@
 import { Booking } from "./definitions";
-import { rooms } from "../form/form-options";
+import { rooms } from "../ui/forms/form-options";
 
 export const showNiceDates = (travel_dates: Booking["travel_dates"]) => {
   let str = "Inget datum satt";
@@ -28,19 +28,19 @@ export const showNiceDates = (travel_dates: Booking["travel_dates"]) => {
   return str;
 };
 
-export const showGuests = (guests: number, guestsChildren: number = 0) => {
+export const showGuests = (guests: number, guests_children: number = 0) => {
   function totalGuests() {
     let word = "gäster";
-    const totalGuests = guests + guestsChildren;
+    const totalGuests = guests + guests_children;
     if (totalGuests <= 1) word = "gäst";
-    return `${guests} ${word}`;
+    return `${totalGuests} ${word}`;
   }
 
   function dividedGuests() {
     let adultPrashing = "vuxna";
     if (guests <= 1) adultPrashing = "vuxen";
-    if (guestsChildren > 0) {
-      return `${guests} ${adultPrashing}, ${guestsChildren} barn`
+    if (guests_children > 0) {
+      return `${guests} ${adultPrashing}, ${guests_children} barn`
     } else { return `${guests} ${adultPrashing}` }
   }
 

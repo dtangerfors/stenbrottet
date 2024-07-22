@@ -1,5 +1,8 @@
 import clsx from "clsx";
+import Link from "next/link";
 import React from "react";
+import { PencilSquareIcon, XCircleIcon } from "@heroicons/react/24/outline";
+import { Tooltip } from "@nextui-org/react";
 
 export const TaskButton = ({ onClick, actionText, icon }: any) => {
   const iconClassName = `ri-${icon}-fill`;
@@ -29,3 +32,16 @@ export const PrimaryButton = ({ onClick, actionText, text }: any) => {
     </button>
   );
 };
+
+export function UpdateBooking({ id }: { id: string }) {
+  return (
+    <Link
+      href={`/app/booking/${id}/edit`}
+      className="inline-block rounded-full p-1 text-gray-500 hover:text-gray-950"
+    >
+      <Tooltip content="Ändra bokning">
+        <PencilSquareIcon width={24}/>
+      </Tooltip>
+    </Link>
+  );
+}

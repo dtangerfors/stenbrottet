@@ -29,6 +29,26 @@ export async function fetchBookings() {
   }
 }
 
+export async function fetchBookingById(id: string) {
+  try {
+    const booking = await sql`SELECT * FROM bookings WHERE id=${id}`;
+    return booking.rows[0] as Booking;
+  } catch (error) {
+    console.error('Failed to fetch user:', error);
+    throw new Error('Failed to fetch user.');
+  }
+}
+
+export async function fetchUsers() {
+  try {
+    const users = await sql<User>`SELECT id, name, email, user_role FROM users`;
+    return users.rows;
+  } catch (error) {
+    console.error('Failed to fetch user:', error);
+    throw new Error('Failed to fetch user.');
+  }
+}
+
 export async function getUser(id: string) {
   try {
     const user = await sql`SELECT * FROM users WHERE id=${id}`;
