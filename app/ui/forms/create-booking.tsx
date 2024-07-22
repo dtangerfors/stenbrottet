@@ -33,6 +33,8 @@ export function CreateBookingForm({user}: {user: User}) {
     message: "",
     id: "",
     user_id: user.id,
+    created_at: 0,
+    updated_at: 0,
   };
 
   const validationSchema = Yup.object({

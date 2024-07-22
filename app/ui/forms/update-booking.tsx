@@ -14,7 +14,7 @@ import {
 import { I18nProvider } from "@react-aria/i18n";
 import { rooms, guests } from "./form-options";
 import { Booking, BookingFormValues } from "../../lib/definitions";
-import { createBooking } from "../../lib/actions";
+import { updateBooking } from "../../lib/actions";
 import { formStyling } from "./styles";
 
 export function UpdateBookingForm({booking}: {booking: Booking}) {
@@ -31,6 +31,8 @@ export function UpdateBookingForm({booking}: {booking: Booking}) {
     message: booking.message,
     id: booking.id,
     user_id: booking.user_id,
+    created_at: booking.created_at,
+    updated_at: booking.updated_at,
   };
 
   const validationSchema = Yup.object({
@@ -47,7 +49,7 @@ export function UpdateBookingForm({booking}: {booking: Booking}) {
     values.travel_dates.end = values.travel_dates.end.toString();
 
     const data = JSON.parse(JSON.stringify(values))
-    createBooking(data);
+    updateBooking(data);
   };
 
   return (

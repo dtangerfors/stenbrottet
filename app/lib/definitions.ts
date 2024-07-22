@@ -30,7 +30,9 @@ export type BookingFormValues = {
   message: string;
   user_id: string;
   rooms: string[];
-  id?: string;
+  id: string;
+  created_at: number;
+  updated_at: number;
 }
 
 export type Booking = {
@@ -48,6 +50,7 @@ export type Booking = {
   updated_at: number;
   user_color: string;
   id: string;
+  is_canceled: boolean;
 }
 
 export type BookingEvent = {
