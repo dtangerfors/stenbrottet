@@ -3,24 +3,17 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PhotoIcon, FlagIcon, UserCircleIcon, PresentationChartBarIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
-const links = [
-  { name: "Galleri", href: "/app/gallery", icon: PhotoIcon },
-  { name: "Rapportera problem", href: "/app/report", icon: FlagIcon },
-  { name: "Statistik", href: "/app/statistics", icon: PresentationChartBarIcon },
-  { name: "Admin", href: "/app/admin", icon: UserCircleIcon },
-];
-
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import { dashboardLinks } from "./links";
 
 type SideNavLinksProps = {
   isMobile?: RegExpMatchArray | null;
+  role: string;
 }
 
-export default function SideNavLinks({isMobile}: SideNavLinksProps) {
+export default function SideNavLinks({isMobile, role}: SideNavLinksProps) {
   const pathname = usePathname();
+  const links = dashboardLinks[role as keyof typeof dashboardLinks]
 
   return (
     <ul className={clsx("flex flex-col", !isMobile && "gap-2", isMobile && "gap-px rounded-3xl overflow-hidden border border-gray-50 shadow-xl shadow-gray-700/10")}>

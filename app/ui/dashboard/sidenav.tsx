@@ -5,15 +5,16 @@ import {
   ChevronRightIcon,
 } from "@heroicons/react/24/solid";
 import {ArrowRightStartOnRectangleIcon as SignOutDesktop} from "@heroicons/react/16/solid"
-import { getData } from "@/app/lib/data";
-import { signOut } from "@/auth";
+import { getData, getUser } from "@/app/lib/data";
+import { signOut, auth } from "@/auth";
 
 export default async function SideNav({
   isMobile,
 }: {
   isMobile?: RegExpMatchArray | null;
 }) {
-
+  const authData = await auth();
+  const user = await getUser(authData!.user!.id as string);
   const release = await getData("https://api.github.com/repos/dtangerfors/stenbrottet/releases");
 
   return (
@@ -23,7 +24,7 @@ export default async function SideNav({
         isMobile ? "w-full" : "w-72",
       )}
     >
-      <SideNavLinks isMobile={isMobile} />
+      <SideNavLinks isMobile={isMobile} role={user.user_role} />
       <div className="mt-auto">
 
       <form 
