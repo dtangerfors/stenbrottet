@@ -34,7 +34,7 @@ const satoshi = localFont({
 
 export const metadata: Metadata = {
   title: 'Stenbrottsvägen 3',
-  appleWebApp: { statusBarStyle: 'black-translucent' },
+  appleWebApp: { statusBarStyle: 'black-translucent', capable: true },
   manifest: "/manifest.json",
   icons: [
     { rel: "apple-touch-icon", url: "icons/apple-touch-icon.png" },
