@@ -12,6 +12,12 @@ const nextConfig = {
         port: '',
         pathname: '/stenbrottsvagen/gallery/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'stenbrottet.vercel.app',
+        port: '',
+        pathname: '/**'
+      },
     ],
   },
 };
