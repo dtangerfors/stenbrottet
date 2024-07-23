@@ -20,7 +20,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <DesktopNav />
         </div>
       )}
-      <div className={clsx(isMobile ? "block pt-safe-top pb-20 mt-14" : "flex w-full items-start gap-6 lg:p-6")}>
+      <div className={clsx(isMobile ? "block pt-safe-top pb-20" : "flex w-full items-start gap-6 lg:p-6")}>
         {!isMobile && <div className="hidden laptop:flex sticky top-[5.5rem]"><SideNav /></div>}
         <main className={clsx("w-full grow", isMobile && "flex flex-col")}>{children}</main>
       </div>

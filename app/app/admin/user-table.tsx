@@ -16,8 +16,8 @@ export function UserTable({users}: {users: User[]}) {
   }), [])
 
   return (
-    <div className="rounded-4xl bg-white p-3 border border-gray-50 shadow-xl shadow-gray-700/10">
-    <Table aria-label="Mina bokningar" color="secondary" removeWrapper classNames={tableStyling}>
+    <div className="rounded-4xl bg-white p-3 border border-gray-50 shadow-xl shadow-gray-700/10 overflow-x-auto">
+    <Table aria-label="Mina bokningar" color="secondary" removeWrapper classNames={tableStyling} className="min-w-[640px]">
       <TableHeader className="uppercase">
         <TableColumn>Namn</TableColumn>
         <TableColumn>Mail</TableColumn>

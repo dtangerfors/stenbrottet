@@ -11,8 +11,8 @@ export function BookingTable({bookings}: {bookings: Booking[]}) {
   const bookingsSorted = bookings.reverse().sort((a, b) => new Date(b.travel_dates.end).getTime() - new Date(a.travel_dates.end).getTime());
 
   return (
-    <div className="rounded-4xl bg-white p-3 border border-gray-50 shadow-xl shadow-gray-700/10">
-    <Table aria-label="Mina bokningar" color="secondary" removeWrapper>
+    <div className="rounded-4xl bg-white p-3 border border-gray-50 shadow-xl shadow-gray-700/10 overflow-x-auto">
+    <Table aria-label="Mina bokningar" color="secondary" removeWrapper className="min-w-[640px]">
       <TableHeader className="uppercase">
         <TableColumn>Resedatum</TableColumn>
         <TableColumn>Gäster</TableColumn>

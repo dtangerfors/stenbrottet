@@ -19,7 +19,7 @@ export default async function Home() {
     <>
       {isMobile && <FixedHeader label="Hem" invisibleFromStart />}
       <div
-        className={clsx('flex w-full flex-col lg:gap-12', isMobile && "-mt-14")}
+        className={"flex w-full flex-col lg:gap-12"}
       >
         <div className={clsx("relative grid place-items-center overflow-hidden p-6 lg:rounded-3xl", isMobile ? "h-[27.5rem] pt-safe-top" : "h-96")}>
           <figure className="absolute inset-0 h-full w-full">
