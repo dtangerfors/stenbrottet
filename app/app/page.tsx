@@ -9,6 +9,7 @@ import { PostsLoading } from '../ui/posts/posts-loading';
 import { Suspense } from 'react';
 import { SmallBookingCard } from '../ui/booking-card-small';
 import { Section } from '../ui/layout';
+import bgImage from "@/public/cover-flowers-desktop.webp"
 
 export default async function Home() {
   const { isMobile } = getDeviceType();
@@ -22,7 +23,7 @@ export default async function Home() {
         className={"flex w-full flex-col lg:gap-12"}
       >
         <div className={clsx("relative grid place-items-center overflow-hidden p-6 lg:rounded-3xl", isMobile ? "h-[27.5rem] pt-safe-top" : "h-96")}>
-          <figure className="absolute inset-0 h-full w-full">
+          <figure className={clsx(isMobile ? "fixed inset-0 z-[1] h-dvh w-dvw" : "absolute inset-0 h-full w-full")}>
             <Image
               src="/digerhuvud-desktop.jpg"
               alt="Ett grönt fält med blåeld"
@@ -32,7 +33,7 @@ export default async function Home() {
             />
             <div className="absolute inset-0 h-full w-full bg-black/30"></div>
           </figure>
-          <div className="relative flex flex-col items-center">
+          <div className="relative z-10 flex flex-col items-center">
             <h1 className="mb-6 font-serif text-3xl font-semibold text-white lg:text-6xl">
               Stenbrottsvägen
             </h1>
