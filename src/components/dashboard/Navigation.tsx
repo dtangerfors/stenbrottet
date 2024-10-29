@@ -47,7 +47,7 @@ export default function Navigation({isMobile}: {isMobile: RegExpMatchArray | nul
                 !isMobile && "dark:bg-gray-800 group-hover:dark:bg-primary-700 group-hover:dark:text-secondary-400",
                 activeLink && "text-secondary-100 size-8 bg-secondary-500"
                 )}>
-                <LinkIcon className={clsx(!isMobile && "w-4", isMobile && "w-6")} />
+                <LinkIcon />
               </span>
               <p className="grow">{link.name}</p>
             </Link>

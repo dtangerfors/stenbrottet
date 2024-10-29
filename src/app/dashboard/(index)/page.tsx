@@ -1,12 +1,12 @@
 import clsx from "clsx";
-import { getSession } from '@auth0/nextjs-auth0';
+// import { getSession } from '@auth0/nextjs-auth0';
 import Image from "next/image";
 import { getDeviceType } from "@/lib/utils";
 import Weather from "@/components/weather";
 
 export default async function DashboardIndex() {
   const { isMobile } = await getDeviceType();
-  const { user } = await getSession();
+  // const { user } = await getSession();
 
   return (
     <>
@@ -23,7 +23,8 @@ export default async function DashboardIndex() {
           </figure>
           <div className="relative z-10 flex flex-col items-center">
             <h1 className="mb-6 font-serif text-3xl font-semibold text-white lg:text-6xl">
-              Hej, {user.given_name || user.name}
+              {/* Hej, {user.given_name || user.name} */}
+              Stenbrottsvägen
             </h1>
             <Weather lon="19.039444" lat="57.855" />
           </div>
