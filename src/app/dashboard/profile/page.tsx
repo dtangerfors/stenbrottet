@@ -1,7 +1,7 @@
 // import { fetchUserBookings, getUser } from '@/app/lib/data';
 import { getDeviceType } from "@/lib/utils";
 // import FixedHeader from '@/app/ui/layout/mobile-header';
-import Image from 'next/image';
+// import Image from 'next/image';
 // import { BookingStatistics } from './booking-stats';
 // import { Section } from '@/app/ui/layout';
 // import { BookingTable } from "./booking-table";

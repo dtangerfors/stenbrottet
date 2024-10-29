@@ -21,6 +21,7 @@ const Weather = ({lat, lon}: {lat: string, lon: string}) => {
    const [currentForecast, setCurrentForecast] = useState<WeatherParameters>({temp: {}, wsymb: {}});
    const [isLoaded, setIsLoaded] = useState(false)
 
+   /* eslint-disable  @typescript-eslint/no-explicit-any */
    const setCurrentForecastObj = (data: any) => {
       const currentData = data.timeSeries[0];
       const currentForecast: WeatherParameters = {
