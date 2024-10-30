@@ -13,7 +13,7 @@ import {
 } from "@nextui-org/react";
 import { I18nProvider } from "@react-aria/i18n";
 import { rooms, guests } from "./form-options";
-import { useAppContext } from "@/app/app/app-context";
+import { useAppContext } from "@/app/dashboard/app-context";
 import { BookingFormValues, User } from "../../lib/definitions";
 import { createBooking } from "../../lib/actions";
 import { formStyling } from "./styles";
