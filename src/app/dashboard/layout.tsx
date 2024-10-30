@@ -1,5 +1,7 @@
-import Navigation from "@/components/dashboard/Navigation";
 import { getDeviceType } from "@/lib/utils";
+import AppProvider from "./app-context";
+import { MobileNav } from "@/components/dashboard/MobileNav";
+import DesktopNav from "@/components/dashboard/DesktopNav";
 
 export default async function DashboardLayout({
   children,
@@ -10,9 +12,12 @@ export default async function DashboardLayout({
   const { isMobile } = await getDeviceType();
 
   return (
-    <div className="flex min-h-dvh bg-offwhite">
-      <Navigation isMobile={isMobile} />
-      <main className="flex-1">{children}</main>
-    </div>
+    <AppProvider>
+      <div className="flex min-h-dvh bg-offwhite">
+        {!isMobile && <DesktopNav isMobile={isMobile} />}
+        <main className="flex-1">{children}</main>
+        {isMobile && <MobileNav />}
+      </div>
+    </AppProvider>
   );
 }

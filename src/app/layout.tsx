@@ -3,6 +3,8 @@ import { UserProvider } from '@auth0/nextjs-auth0/client';
 // import localFont from "next/font/local";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
+import clsx from "clsx";
+import { getDeviceType } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,6 +16,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { isMobile } = getDeviceType();
   return (
     <html lang="en">
       <head>
@@ -21,7 +24,7 @@ export default function RootLayout({
       </head>
       <UserProvider>
         <body
-          className={`${GeistSans.className} antialiased`}
+          className={clsx(`${GeistSans.className} antialiased`, isMobile && 'app-mobile',)}
         >
           {children}
         </body>

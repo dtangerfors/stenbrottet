@@ -1,4 +1,4 @@
-export function PhotoIcon() {
+export function PhotoIcon({size = "size-4"}: {size?: string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ export function PhotoIcon() {
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className="size-4"
+      className={size}
     >
       <path
         strokeLinecap="round"
@@ -17,7 +17,26 @@ export function PhotoIcon() {
   );
 }
 
-export function Bars3Icon() {
+export function PlusIcon({size = "size-4"}: {size?: string}) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className={size}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 4.5v15m7.5-7.5h-15"
+      />
+    </svg>
+  );
+}
+
+export function Bars3Icon({size = "size-4"}: {size?: string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +44,7 @@ export function Bars3Icon() {
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className="size-4"
+      className={size}
     >
       <path
         strokeLinecap="round"
@@ -36,7 +55,7 @@ export function Bars3Icon() {
   );
 }
 
-export function CalendarIcon() {
+export function CalendarIcon({size = "size-4"}: {size?: string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +63,7 @@ export function CalendarIcon() {
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className="size-4"
+      className={size}
     >
       <path
         strokeLinecap="round"
@@ -55,7 +74,7 @@ export function CalendarIcon() {
   );
 }
 
-export function FlagIcon() {
+export function FlagIcon({size = "size-4"}: {size?: string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +82,7 @@ export function FlagIcon() {
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className="size-4"
+      className={size}
     >
       <path
         strokeLinecap="round"
@@ -74,7 +93,7 @@ export function FlagIcon() {
   );
 }
 
-export function HomeIcon() {
+export function HomeIcon({size = "size-4"}: {size?: string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +101,7 @@ export function HomeIcon() {
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className="size-4"
+      className={size}
     >
       <path
         strokeLinecap="round"
@@ -93,7 +112,7 @@ export function HomeIcon() {
   );
 }
 
-export function UserIcon() {
+export function UserIcon({size = "size-4"}: {size?: string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +120,7 @@ export function UserIcon() {
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className="size-4"
+      className={size}
     >
       <path
         strokeLinecap="round"
@@ -112,7 +131,7 @@ export function UserIcon() {
   );
 }
 
-export function UserCircleIcon() {
+export function UserCircleIcon({size = "size-4"}: {size?: string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +139,7 @@ export function UserCircleIcon() {
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className="size-4"
+      className={size}
     >
       <path
         strokeLinecap="round"
@@ -131,7 +150,7 @@ export function UserCircleIcon() {
   );
 }
 
-export function PresentationChartBarIcon() {
+export function PresentationChartBarIcon({size = "size-4"}: {size?: string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +158,7 @@ export function PresentationChartBarIcon() {
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke="currentColor"
-      className="size-4"
+      className={size}
     >
       <path
         strokeLinecap="round"
