@@ -1,6 +1,6 @@
 "use client"
 
-import { BookingEvent } from "@/app/lib/definitions";
+import { BookingEvent } from "@/lib/definitions";
 import { createContext, useContext, useState } from "react"
 
 type CalendarContext = {
