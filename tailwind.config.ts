@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+const { nextui } = require("@nextui-org/react");
 
 const config: Config = {
   content: [
@@ -8,11 +9,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderRadius: {
+        "4xl": "32px",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
         white: "#FFFFFF",
-        offwhite: "#f9f9f9",
+        offwhite: "#edeeed",
         black: "#0e100e",
         primary: {
           DEFAULT: "#1c3a30",
@@ -57,26 +61,70 @@ const config: Config = {
           "950": "#1b2211",
         },
         gray: {
-          "50": "#f2f3f2",
-          "100": "#e2e5e2",
-          "200": "#c5cac5",
-          "300": "#a0a8a1",
-          "400": "#7c857d",
-          "500": "#626a63",
-          "600": "#4d544e",
-          "700": "#404541",
-          "800": "#353a35",
-          "900": "#2f3230",
-          "950": "#0e100e",
-        },
+        '50': '#f6f7f6',
+        '100': '#e3e4e3',
+        '200': '#c8c9c6',
+        '300': '#a4a6a2',
+        '400': '#888a85',
+        '500': '#676963',
+        '600': '#51534e',
+        '700': '#424441',
+        '800': '#373936',
+        '900': '#303130',
+        '950': '#191a19',
+    },
+    
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
         mono: ["var(--font-geist-mono)"],
         serif: "larken",
       },
+      padding: {
+        "safe-bottom": "max(1.5rem, env(safe-area-inset-bottom))",
+        "safe-top": "env(safe-area-inset-top)",
+        "safe-left": "env(safe-area-inset-left)",
+        "safe-right": "env(safe-area-inset-right)",
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/container-queries"),
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            primary: {
+              DEFAULT: "#6ec261",
+              "50": "#f3fbf2",
+              "100": "#e5f6e2",
+              "200": "#ccecc6",
+              "300": "#a2dc99",
+              "400": "#6ec261",
+              "500": "#4ca83f",
+              "600": "#3a8a2f",
+              "700": "#306d28",
+              "800": "#2a5724",
+              "900": "#23481f",
+              "950": "#0e270c",
+            },
+            default: {
+              "50": "#f2f3f2",
+              "100": "#e2e5e2",
+              "200": "#c5cac5",
+              "300": "#a0a8a1",
+              "400": "#7c857d",
+              "500": "#626a63",
+              "600": "#4d544e",
+              "700": "#404541",
+              "800": "#353a35",
+              "900": "#2f3230",
+              "950": "#0e100e",
+            }
+          }
+        }
+      }
+    })
+],
 };
 export default config;
