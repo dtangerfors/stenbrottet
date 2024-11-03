@@ -1,0 +1,39 @@
+{
+  "galleries": [
+      {
+          "id": "bilder-fran-forr",
+          "name": "Bilder från förr",
+          "images": [
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-arkiv-1.jpg", "width": 1200, "height": 802},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-arkiv-2.jpg", "width": 1200, "height": 814},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-arkiv-3.jpg", "width": 1200, "height": 791}
+          ]
+      },
+      {
+          "id": "hakans-byggbilder",
+          "name": "Håkans Byggbilder",
+          "images": [
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-1.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-2.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-3.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-4.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-5.jpg", "width": 675, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-6.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-7.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-8.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-9.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-10.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-11.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-12.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-13.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-14.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-15.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-16.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-17.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-18.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-19.jpg", "width": 1200, "height": 900},
+              {"src":"https://files.dtangerfors.se/stenbrottsvagen/gallery/gotland-bygg-20.jpg", "width": 675, "height": 900}
+          ]
+      }
+  ]
+}
