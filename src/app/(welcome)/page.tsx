@@ -17,9 +17,9 @@ export default function Welcome() {
         </a>
         <div className="py-6 md:pt-12 md:pb-0 text-center">
           <p className="font-sans font-normal text-primary-950">
-            Inget konto än?{" "}
-            <Link href="/" className="font-bold text-gray-600">
-              Skapa konto!
+           Gå vidaret till
+            <Link href="/dashboard" className="font-bold text-gray-600">
+              startsidan
             </Link>
           </p>
           <a href="/api/auth/logout">Logout</a>
