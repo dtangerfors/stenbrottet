@@ -20,6 +20,7 @@ export default function Menu() {
         />
         <div className="absolute inset-0 h-full w-full bg-black/30"></div>
       </figure>
+
       <div className="relative z-10 pt-20">
         <div className="sticky top-32 h-80 my-12 text-center px-6">
           <h1 className="font-serif text-3xl font-semibold text-white">Meny</h1>
@@ -27,6 +28,10 @@ export default function Menu() {
         <div className={clsx("relative z-10 flex w-full gap-4 p-6 pb-28")}>
           <Navigation isMobile={isMobile}  />
         </div>
+
+      <div className={clsx("relative z-10 flex w-full gap-4 p-6", isMobile && "mt-14")}>
+        <Navigation isMobile={isMobile}  />
+
       </div>
     </>
   )
