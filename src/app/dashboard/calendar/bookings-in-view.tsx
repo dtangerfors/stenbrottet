@@ -7,7 +7,7 @@ export function BookingsInView() {
   const hasBookings = bookingsThisMonth.length !== 0;
 
   return (
-    <div className="flex h-full w-full flex-col gap-8 rounded-2xl p-6 @lg:grid @lg:grid-cols-2 @3xl:grid-cols-3 md:bg-white">
+    <div className="flex h-full w-full flex-col gap-8 rounded-2xl p-6 @lg:grid @lg:grid-cols-2 @3xl:grid-cols-3 md:bg-white md:dark:bg-gray-950">
       {hasBookings &&
         bookingsThisMonth.map((booking) => (
           <BookingCard key={booking.id} booking={booking} />

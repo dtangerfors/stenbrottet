@@ -36,7 +36,7 @@ export default function RootLayout({
       </head>
       <UserProvider>
         <body
-          className={clsx(`${GeistSans.className} antialiased`, isMobile && 'app-mobile',)}
+          className={clsx(`${GeistSans.className} antialiased dark`, isMobile && 'app-mobile',)}
         >
           {children}
         </body>

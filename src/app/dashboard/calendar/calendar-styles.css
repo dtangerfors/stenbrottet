@@ -3,7 +3,7 @@
 }
 
 body:not(.app-mobile) .rbc-calendar {
-   @apply h-[calc(100vh-10rem-3px)];
+   @apply h-[calc(100vh-10rem-3px)] overflow-hidden;
 } 
 
 /* Navigation */

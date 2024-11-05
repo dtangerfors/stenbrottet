@@ -25,7 +25,7 @@ export const MobileNav = () => {
   const {onOpen} = useAppContext();
 
   return (
-    <div className="fixed bottom-0 left-0 z-20 w-full bg-white px-6 pb-safe-bottom dark:bg-gray-950 border-t border-gray-100">
+    <div className="fixed bottom-0 left-0 z-20 w-full bg-background px-6 pb-safe-bottom">
       <ul className={clsx("flex w-full gap-2")}>
         {links.map((link, i) => <li key={`link-${i}`} className="flex-1"><NavLink link={link}/></li>)}
       </ul>

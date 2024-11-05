@@ -3,16 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: theme(colors.offwhite);
+  --surface: theme(colors.white);
+  --foreground: theme(colors.black);
+  --foreground-1: theme(colors.gray.600);
+  --foreground-2: theme(colors.gray.100);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: theme(colors.black);
+    --surface: theme(colors.gray.950);
+    --foreground: theme(colors.white);
+    --foreground-1: theme(colors.gray.300);
+    --foreground-2: theme(colors.gray.700);
+  }
+  
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.button-bezel {
-  box-shadow: inset 0 2px 0 0 hsla(0,0%,100%,.2),inset 0 -1px 0 0 rgba(0,0,0,.25),0 2px 6px 0 rgba(0,0,0,.1)
 }

@@ -81,7 +81,7 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
   }, [events, setBookingsThisMonth, setCurrentMonth])
 
   return (
-    <div className={clsx("relative md:col-span-2 transition-all md:bg-white md:rounded-2xl", isMobile ? "p-0 bg-primary" : "p-6")}>
+    <div className={clsx("relative md:col-span-2 transition-all md:bg-white md:rounded-2xl md:dark:bg-gray-950", isMobile ? "p-0 bg-primary" : "p-6")}>
       <Calendar
         culture="sv"
         date={date}

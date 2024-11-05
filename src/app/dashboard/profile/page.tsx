@@ -13,8 +13,6 @@ export default async function Profile() {
   const user = await getUserProfileData();
   const bookings = await fetchUserBookings("8b564bfd-869e-4876-864c-2d2b1ea95d6c");
 
-  console.table(user)
-
   return (
     <>
     {isMobile && <FixedHeader label={user.name} />}
