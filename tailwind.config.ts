@@ -15,7 +15,10 @@ const config: Config = {
       },
       colors: {
         background: "var(--background)",
+        surface: "var(--surface)",
         foreground: "var(--foreground)",
+        "foreground-1": "var(--foreground-1)",
+        "foreground-2": "var(--foreground-2)",
         white: "#FFFFFF",
         offwhite: "#edeeed",
         black: "#0e100e",

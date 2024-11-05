@@ -1,6 +1,6 @@
 "use client"
 import { useAppContext } from "@/app/dashboard/app-context";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody} from "@nextui-org/react";
 
 export function ModalContainer() {
   const {isOpen, onClose, onOpenChange} = useAppContext();
@@ -24,14 +24,12 @@ export function ModalContainer() {
         isDismissable={false}
         >
         <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
-              <ModalBody>
-              </ModalBody>
-              
-            </>
-          )}
+          <>
+            <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+            <ModalBody>
+            </ModalBody>
+            
+          </>
         </ModalContent>
       </Modal>
     </>

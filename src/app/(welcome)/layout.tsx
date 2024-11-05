@@ -16,7 +16,7 @@ export default function Layout({
           <Logo />
         </div>
       </div>
-      <div className="relative md:h-full w-full lg:max-w-screen-sm flex flex-col justify-center items-center bg-white max-md:self-end max-md:rounded-t-3xl md:rounded-l-3xl">
+      <div className="relative md:h-full w-full lg:max-w-screen-sm flex flex-col justify-center items-center bg-white max-md:self-end max-md:rounded-t-2xl max-md:pb-12 md:rounded-l-2xl">
         {children}
       </div>
     </main>

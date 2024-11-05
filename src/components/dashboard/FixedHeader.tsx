@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useRef, useEffect } from "react";
 import { useCalendarContext } from "@/app/dashboard/calendar/context";
 
@@ -7,25 +7,35 @@ type FixedHeaderProps = {
   contentRight?: React.ReactNode;
   contentLeft?: React.ReactNode;
   invisibleFromStart?: boolean;
-}
+};
 
-export default function FixedHeader({label, contentRight, contentLeft, invisibleFromStart}: FixedHeaderProps) {
+export default function FixedHeader({
+  label,
+  contentRight,
+  contentLeft,
+  invisibleFromStart,
+}: FixedHeaderProps) {
   const headerRef = useRef<HTMLHeadingElement | null>(null);
-  const {currentMonth} = useCalendarContext();
+  const { currentMonth } = useCalendarContext();
 
   // scroll event handler
   const handleScroll = () => {
-    if(invisibleFromStart) {
-      const elem: any = headerRef.current;
+    if (invisibleFromStart) {
+      const elem: HTMLHeadingElement | null = headerRef.current;
       const scrolled = document.documentElement.scrollTop;
 
-    if (scrolled > 100) {
-      elem.classList.add("opacity-100")
-      elem.classList.remove("opacity-0")
-    } else {
-      elem.classList.add("opacity-0")
-      elem.classList.remove("opacity-100")
-    }}
+      if (scrolled > 100) {
+        if (elem) {
+          elem.classList.add("opacity-100");
+          elem.classList.remove("opacity-0");
+        }
+      } else {
+        if (elem) {
+          elem.classList.add("opacity-0");
+          elem.classList.remove("opacity-100");
+        }
+      }
+    }
   };
 
   useEffect(() => {
@@ -38,12 +48,19 @@ export default function FixedHeader({label, contentRight, contentLeft, invisible
   });
 
   return (
-      <header className={`fixed w-full z-20 top-0 pt-safe-top px-6 bg-primary transition-all duration-300 ${invisibleFromStart ? "opacity-0" : "opacity-100"}`} ref={headerRef}>
-        <div className="flex items-center w-full h-14 max-w-screen-xl mx-auto">
+    <header
+      className={`fixed w-full z-20 top-0 pt-safe-top px-6 bg-primary transition-all duration-300 ${
+        invisibleFromStart ? "opacity-0" : "opacity-100"
+      }`}
+      ref={headerRef}
+    >
+      <div className="flex items-center w-full h-14 max-w-screen-xl mx-auto">
         <span className="grow">{contentLeft}</span>
-        <span className="text-base text-white font-sans font-medium">{label || currentMonth}</span>
+        <span className="text-base text-white font-sans font-medium">
+          {label || currentMonth}
+        </span>
         <span className="grow">{contentRight}</span>
-        </div>
-      </header>
+      </div>
+    </header>
   );
 }

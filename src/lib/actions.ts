@@ -96,6 +96,7 @@ export async function cancelBooking(id: string) {
   `;
     revalidatePath('/app/profile');
     return { message: 'Bokning avbokad' };
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return { message: 'Database Error: Failed to cancel booking.' };
   }

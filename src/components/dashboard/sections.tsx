@@ -1,18 +1,17 @@
-import clsx from "clsx";
-
 type SectionProps = {
   children: React.ReactNode;
-  bgColor?: string;
-  pt?: "small" | "default";
 }
 
-export const Section = ({ children, bgColor, pt = "default" }: SectionProps) => (
-  <section className={clsx(
-    "relative z-[2] rounded-t-4xl", 
-    "max-lg:-mt-8 max-lg:px-6 pb-20 last:pb-6",
-    (pt === "default" ? "pt-6" : "pt-3"),
-    (bgColor ? bgColor : "bg-offwhite dark:bg-black")
-    )}>
+export const Section = ({ children }: SectionProps) => (
+  <section className="bg-surface p-6 rounded-2xl">
     {children}
   </section>
 );
+
+export const Main = ({children}: {children: React.ReactNode}) => (
+  <div className="relative z-[1] md:p-6 bg-background">
+    <div className="relative flex flex-col gap-2 md:gap-6 max-md:-top-4">
+      {children}
+    </div>
+  </div>
+)

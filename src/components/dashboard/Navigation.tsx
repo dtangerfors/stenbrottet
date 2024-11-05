@@ -48,8 +48,8 @@ export default function Navigation({
                     !isMobile &&
                       "size-8 group-hover:bg-secondary-500 group-hover:text-secondary-100",
                     !isMobile &&
-                      "dark:bg-gray-800 group-hover:dark:bg-primary-700 group-hover:dark:text-secondary-400",
-                    activeLink && "text-secondary-100 size-8 bg-secondary-500"
+                      "dark:bg-gray-950 group-hover:dark:bg-secondary-700",
+                    activeLink && "text-secondary-100 size-8 bg-secondary-500 dark:bg-secondary-700"
                   )}
                 >
                   <LinkIcon />

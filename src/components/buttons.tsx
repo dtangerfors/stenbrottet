@@ -1,10 +1,17 @@
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
-import { PencilSquareIcon, XCircleIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { Tooltip } from "@nextui-org/react";
 
-export const TaskButton = ({ onClick, actionText, icon }: any) => {
+type ButtonProps = {
+  onClick: () => void;
+  actionText: string;
+  text?: string;
+  icon?: string;
+}
+
+export const TaskButton = ({ onClick, actionText, icon }: ButtonProps) => {
   const iconClassName = `ri-${icon}-fill`;
 
   return (
@@ -18,7 +25,7 @@ export const TaskButton = ({ onClick, actionText, icon }: any) => {
   );
 };
 
-export const PrimaryButton = ({ onClick, actionText, text }: any) => {
+export const PrimaryButton = ({ onClick, actionText, text }: ButtonProps) => {
   return (
     <button
       onClick={onClick}

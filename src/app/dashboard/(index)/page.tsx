@@ -1,12 +1,20 @@
 import clsx from "clsx";
-// import { getSession } from '@auth0/nextjs-auth0';
 import Image from "next/image";
 import { getDeviceType } from "@/lib/utils";
 import Weather from "@/components/weather";
+import { fetchBookings, fetchPosts } from "@/lib/data";
+import { getUserProfileData } from "@/services/profile.service";
+import { Main, Section } from "@/components/dashboard/sections";
+import { SmallBookingCard } from "@/components/cards";
+import { PostsLoading } from "@/components/posts/posts-loading";
+import { Suspense } from "react";
+import { InfoPosts } from "@/components/posts/info-posts";
 
 export default async function DashboardIndex() {
   const { isMobile } = await getDeviceType();
-  // const { user } = await getSession();
+  const user = await getUserProfileData();
+  const posts = await fetchPosts();
+  const bookings = await fetchBookings();
 
   return (
     <>
@@ -23,12 +31,39 @@ export default async function DashboardIndex() {
           </figure>
           <div className="relative z-10 flex flex-col items-center">
             <h1 className="mb-6 font-serif text-3xl font-semibold text-white lg:text-6xl">
-              {/* Hej, {user.given_name || user.name} */}
-              Stenbrottsvägen
+              Hej, {user.given_name || user.name}
             </h1>
             <Weather lon="19.039444" lat="57.855" />
           </div>
         </div>
+        <Main>
+          <Section>
+              <h2 className="mb-6 font-serif text-2xl font-semibold text-foreground max-lg:text-center lg:text-4xl">
+                Senaste bokningar
+              </h2>
+              <div className="@container">
+                <div className="flex flex-col gap-3 @3xl:flex-row">
+                  {bookings
+                    .reverse()
+                    .slice(0, 3)
+                    .map((booking, i) => (
+                      <SmallBookingCard
+                      key={`latest-bookings-${i}`}
+                      booking={booking}
+                      />
+                    ))}
+                </div>
+              </div>
+          </Section>
+          <Section>
+            <h2 className="mb-6 font-serif text-2xl font-semibold text-foreground max-lg:text-center lg:text-4xl">
+              Information
+            </h2>
+            <Suspense fallback={<PostsLoading />}>
+              <InfoPosts data={posts} />
+            </Suspense>
+        </Section>
+        </Main>
     </>
   );
 }

@@ -15,7 +15,6 @@ import clsx from "clsx";
 export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobile: RegExpMatchArray | null}) {
   const router = useRouter();
   const [events, setEvents] = useState<BookingEvent[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
   const { setCurrentMonth, setBookingsThisMonth } = useCalendarContext();
   const { setSelectedDate } = useAppContext();
   const [date, setDate] = useState(new Date());
@@ -32,7 +31,6 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
     })
 
     setEvents(bookingsToState);
-    setIsLoaded(true)
 
   }, [bookings])
 
@@ -81,7 +79,7 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
   }, [events, setBookingsThisMonth, setCurrentMonth])
 
   return (
-    <div className={clsx("relative md:col-span-2 transition-all md:bg-white md:rounded-2xl", isMobile ? "p-0 bg-primary" : "p-6")}>
+    <div className={clsx("relative md:col-span-2 transition-all md:bg-white md:rounded-2xl md:dark:bg-gray-950", isMobile ? "p-0 bg-primary" : "p-6")}>
       <Calendar
         culture="sv"
         date={date}
