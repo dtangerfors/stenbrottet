@@ -40,7 +40,7 @@ export function BookingTable({ bookings }: { bookings: Booking[] }) {
         </header>
         <ul className="@3xl:table-row-group">
           {bookingsSorted.map((booking) => (
-            <li className="@3xl:table-row border-b last:border-none pb-4 mb-4 border-foreground-2">
+            <li key={booking.id} className="@3xl:table-row border-b last:border-none pb-4 mb-4 border-foreground-2">
             <ul
               className={clsx("grid grid-cols-2 @xl:grid-cols-3 @3xl:contents gap-4", booking.is_canceled && "opacity-50")}
               key={booking.id}

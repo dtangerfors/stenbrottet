@@ -34,6 +34,6 @@ export const InfoPosts = ({ data }: { data: InfoPost[] }) => {
 };
 
 const showDate = (timeStr: string) => {
-  let date = new Date(timeStr);
+  const date = new Date(timeStr);
   return date.toLocaleDateString();
 };
