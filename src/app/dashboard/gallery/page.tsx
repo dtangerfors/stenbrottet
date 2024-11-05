@@ -1,12 +1,7 @@
 import { getDeviceType } from "@/lib/utils";
 import FixedHeader from "@/components/dashboard/FixedHeader";
 import { GalleryItem } from "./gallery-item";
-import { GalleryProps } from "@/lib/definitions";
 import imageData from "./image-data.json";
-
-type FetchedData = {
-  galleries: GalleryProps[];
-}
 
 export default async function Gallery() {
   const { isMobile } = getDeviceType();

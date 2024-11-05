@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowsPointingOutIcon, XMarkIcon } from "@heroicons/react/16/solid";
+import { ArrowsPointingOutIcon } from "@heroicons/react/16/solid";
 import { GalleryProps } from "@/lib/definitions";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
@@ -12,7 +12,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   useDisclosure,
 } from "@nextui-org/modal";
 
@@ -49,7 +48,6 @@ export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
 
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
-          {(onClose) => (
             <>
               <ModalHeader>
                 <h2 className="font-serif text-2xl font-semibold text-primary">
@@ -102,7 +100,6 @@ export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
                 </div>
               </ModalBody>
             </>
-          )}
         </ModalContent>
       </Modal>
     </>

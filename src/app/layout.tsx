@@ -30,13 +30,13 @@ export default function RootLayout({
 }>) {
   const { isMobile } = getDeviceType();
   return (
-    <html lang="en">
+    <html lang="en" className="bg-background">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/mbx5ori.css" />
       </head>
       <UserProvider>
         <body
-          className={clsx(`${GeistSans.className} antialiased dark`, isMobile && 'app-mobile',)}
+          className={clsx(`${GeistSans.className} antialiased dark:dark`, isMobile && 'app-mobile',)}
         >
           {children}
         </body>

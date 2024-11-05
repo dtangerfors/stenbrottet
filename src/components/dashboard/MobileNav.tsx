@@ -10,7 +10,6 @@ import {
   Bars3Icon,
   PlusIcon
 } from "@/components/icons";
-import { useAppContext } from "@/app/dashboard/app-context";
 
 const links = [
   { name: "Hem", href: "/dashboard", icon: HomeIcon },
@@ -21,8 +20,6 @@ const links = [
 ];
 
 export const MobileNav = () => {
-
-  const {onOpen} = useAppContext();
 
   return (
     <div className="fixed bottom-0 left-0 z-20 w-full bg-background px-6 pb-safe-bottom">

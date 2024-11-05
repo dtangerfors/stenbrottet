@@ -15,7 +15,6 @@ import clsx from "clsx";
 export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobile: RegExpMatchArray | null}) {
   const router = useRouter();
   const [events, setEvents] = useState<BookingEvent[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
   const { setCurrentMonth, setBookingsThisMonth } = useCalendarContext();
   const { setSelectedDate } = useAppContext();
   const [date, setDate] = useState(new Date());
@@ -32,7 +31,6 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
     })
 
     setEvents(bookingsToState);
-    setIsLoaded(true)
 
   }, [bookings])
 

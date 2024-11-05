@@ -1,12 +1,8 @@
-import clsx from "clsx";
-
 type SectionProps = {
   children: React.ReactNode;
-  bgColor?: string;
-  pt?: "small" | "default";
 }
 
-export const Section = ({ children, bgColor, pt = "default" }: SectionProps) => (
+export const Section = ({ children }: SectionProps) => (
   <section className="bg-surface p-6 rounded-2xl">
     {children}
   </section>
