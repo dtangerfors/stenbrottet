@@ -14,7 +14,7 @@ export default async function Profile() {
 
   return (
     <>
-    {isMobile && <FixedHeader label={user.name} />}
+    {isMobile && <FixedHeader label={user.name} invisibleFromStart />}
       <div className={clsx("flex w-full flex-col", isMobile && "mt-14")}>
         <div className="flex flex-col items-center justify-center bg-primary p-6 max-lg:pb-16 lg:p-12">
           <><div className="mb-3">
