@@ -24,7 +24,7 @@ export default function FixedHeader({
       const elem: HTMLHeadingElement | null = headerRef.current;
       const scrolled = document.documentElement.scrollTop;
 
-      if (scrolled > 100) {
+      if (scrolled > 176) {
         if (elem) {
           elem.classList.add("opacity-100");
           elem.classList.remove("opacity-0");

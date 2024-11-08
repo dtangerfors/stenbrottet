@@ -22,7 +22,7 @@ export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
   return (
     <>
       <button
-        className="relative rounded-2xl flex flex-row-reverse sm:flex-col justify-between items-start p-2 sm:p-4 bg-white"
+        className="relative rounded-2xl flex flex-row-reverse sm:flex-col justify-between items-start p-6 sm:p-4 bg-surface"
         tabIndex={0}
         onClick={onOpen}
       >
@@ -36,11 +36,11 @@ export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
           />
           <ArrowsPointingOutIcon className="absolute bottom-1.5 sm:bottom-4 right-1.5 sm:right-4 w-4 text-white" />
         </figure>
-        <div className="text-left sm:pt-4 max-sm:pl-2">
-            <h2 className="font-serif text-lg font-semibold text-primary-900">
+        <div className="text-left sm:pt-4">
+            <h2 className="font-serif text-lg font-semibold text-foreground">
               {gallery.name}
             </h2>
-            <p className="font-sans text-xs font-medium uppercase text-primary-900/80">
+            <p className="font-sans text-xs font-medium uppercase text-foreground-1">
               {gallery.images.length} bilder
             </p>
         </div>

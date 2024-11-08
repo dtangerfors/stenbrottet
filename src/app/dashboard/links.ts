@@ -1,16 +1,26 @@
 import {
   PhotoIcon,
-  FlagIcon,
   UserCircleIcon,
   PresentationChartBarIcon,
   UserIcon,
   HomeIcon,
   CalendarIcon,
-} from "@/components/icons";
+  ArrowRightStartOnRectangleIcon
+} from "@heroicons/react/24/outline";
+import { ForwardRefExoticComponent, RefAttributes, SVGProps } from "react";
 
-const admin = [
+type LinkProps = {
+  name: string;
+  href: string;
+  renderNativeLink?: boolean;
+  icon: ForwardRefExoticComponent<Omit<SVGProps<SVGSVGElement>, "ref"> & {
+    title?: string;
+    titleId?: string;
+} & RefAttributes<SVGSVGElement>>
+}[]
+
+const admin: LinkProps = [
   { name: "Galleri", href: "/dashboard/gallery", icon: PhotoIcon },
-  { name: "Rapportera problem", href: "/dashboard/report", icon: FlagIcon },
   {
     name: "Statistik",
     href: "/dashboard/statistics",
@@ -19,9 +29,8 @@ const admin = [
   { name: "Admin", href: "/dashboard/admin", icon: UserCircleIcon },
 ];
 
-const moderator = [
+const moderator: LinkProps = [
   { name: "Galleri", href: "/dashboard/gallery", icon: PhotoIcon },
-  { name: "Rapportera problem", href: "/dashboard/report", icon: FlagIcon },
   {
     name: "Statistik",
     href: "/dashboard/statistics",
@@ -29,12 +38,15 @@ const moderator = [
   },
 ];
 
-const user = [
+const user: LinkProps = [
   { name: "Galleri", href: "/dashboard/gallery", icon: PhotoIcon },
-  { name: "Rapportera problem", href: "/dashboard/report", icon: FlagIcon },
 ];
 
-export const navLinks = [
+export const logout: LinkProps = [
+  { name: "Logga ut", href: "/api/auth/logout", icon: ArrowRightStartOnRectangleIcon, renderNativeLink: true}
+]
+
+export const navLinks: LinkProps = [
   { name: "Hem", href: "/dashboard", icon: HomeIcon },
   { name: "Kalender", href: "/dashboard/calendar", icon: CalendarIcon },
   { name: "Profil", href: "/dashboard/profile", icon: UserIcon },
