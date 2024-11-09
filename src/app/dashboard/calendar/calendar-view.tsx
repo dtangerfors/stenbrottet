@@ -51,7 +51,7 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
 
   const onDrillDown = useCallback((newDate: Date) => {
     setSelectedDate(newDate.toLocaleDateString());
-    router.push("/app/booking/create");
+    router.push("/dashboard/booking/create");
   }, [setSelectedDate, router])
 
   const onNavigate = useCallback((newDate: Date) => {

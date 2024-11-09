@@ -16,13 +16,13 @@ export default async function CalendarPage() {
     <CalendarProvider>
       <div className={clsx(isMobile && "flex flex-col h-full bg-gradient-to-b from-primary from-25% to-25% to-white")}>
         {isMobile && <FixedHeader />}
-        <div className={clsx("@container", isMobile && "mt-14")}>
+        <div className={clsx("@container", isMobile && "mt-14 pt-safe-top")}>
           <div className={clsx("flex flex-col @4xl:grid @4xl:grid-cols-3 w-full", !isMobile && "p-6 gap-6")}>
             <Suspense fallback={<CalendarSkeleton />}>
               <CalendarView bookings={bookings} isMobile={isMobile} />
             </Suspense>
 
-            <div className={clsx("@container relative grow", isMobile && "pb-24 bg-white")}>
+            <div className={clsx("@container relative grow", isMobile && "pb-24 bg-surface")}>
               <Suspense fallback={<BookingEventSkeleton />}>
                 <BookingsInView />
               </Suspense>

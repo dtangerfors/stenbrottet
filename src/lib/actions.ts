@@ -48,8 +48,8 @@ export async function createBooking(data: BookingFormValues) {
     VALUES (${created_at}, ${updated_at}, ${user_id}, ${name}, ${travelDates}, ${guests}, ${guests_children}, ${roomsJsonb}, ${message})    
   `
 
-  revalidatePath('/app/profile');
-  redirect('/app/profile');
+  revalidatePath('/dashboard/profile');
+  redirect('/dashboard/profile');
 }
 
 export async function updateBooking(data: BookingFormValues) {
@@ -73,8 +73,8 @@ export async function updateBooking(data: BookingFormValues) {
     WHERE id = ${id}
     `
 
-  revalidatePath('/app/profile');
-  redirect('/app/profile');
+  revalidatePath('/dashboard/profile');
+  redirect('/dashboard/profile');
 }
 
 export async function updateUserData(data:UpdateUserForm) {
@@ -83,7 +83,7 @@ export async function updateUserData(data:UpdateUserForm) {
     SET user_role = ${data.user_role}
     WHERE id = ${data.id}
   `
-  revalidatePath('/app/admin');
+  revalidatePath('/dashboard/admin');
 }
 
 export async function cancelBooking(id: string) {

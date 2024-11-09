@@ -27,7 +27,7 @@ export default async function DashboardIndex() {
               height={1080}
               className="h-full w-full object-cover object-top"
             />
-            <div className="absolute inset-0 h-full w-full bg-black/30"></div>
+            <div className="fixed inset-0 h-full w-full bg-gradient-to-b from-black/30 from-[30rem] to-surface"></div>
           </figure>
           <div className="relative z-10 flex flex-col items-center">
             <h1 className="mb-6 font-serif text-3xl font-semibold text-white lg:text-6xl">
@@ -36,7 +36,7 @@ export default async function DashboardIndex() {
             <Weather lon="19.039444" lat="57.855" />
           </div>
         </div>
-        <Main>
+        <Main pullUp>
           <Section>
               <h2 className="mb-6 font-serif text-2xl font-semibold text-foreground max-lg:text-center lg:text-4xl">
                 Senaste bokningar

@@ -14,16 +14,17 @@ import {
 import { I18nProvider } from "@react-aria/i18n";
 import { rooms, guests } from "./form-options";
 import { useAppContext } from "@/app/dashboard/app-context";
-import { BookingFormValues, User } from "../../lib/definitions";
+import { BookingFormValues } from "../../lib/definitions";
+import { UserProfile } from "@auth0/nextjs-auth0/client";
 import { createBooking } from "../../lib/actions";
 import { formStyling } from "./styles";
 
-export function CreateBookingForm({user}: {user: User}) {
+export function CreateBookingForm({user}: {user: UserProfile}) {
   const {selectedDate} = useAppContext();
 
   const initialValues = {
-    name: user.name,
-    guests: "0",
+    name: user.name as string,
+    guests: "1",
     guests_children: "0",
     travel_dates: {
       start: parseDate(selectedDate),
@@ -32,7 +33,7 @@ export function CreateBookingForm({user}: {user: User}) {
     rooms: [],
     message: "",
     id: "",
-    user_id: user.id,
+    user_id: user.app_user_id as string,
     created_at: 0,
     updated_at: 0,
   };
@@ -68,7 +69,8 @@ export function CreateBookingForm({user}: {user: User}) {
                 {...field}
                 label="Namn"
                 size="lg"
-                radius="lg"
+                radius="sm"
+                variant="flat"
                 classNames={formStyling.input}
                 isInvalid={!errors.name || !touched.name ? false : true}
                 errorMessage={errors.name}
@@ -76,7 +78,7 @@ export function CreateBookingForm({user}: {user: User}) {
             )}
           </Field>
 
-          <div className="bg-white border border-gray-200 shadow-xl shadow-gray-700/10 p-3 rounded-large">
+          <div className="bg-surface p-3 rounded-lg">
             <p className="relative text-medium text-foreground-500">Vem följer med?</p>
 
             <div className="divide-y divide-gray-200">
@@ -123,7 +125,8 @@ export function CreateBookingForm({user}: {user: User}) {
                   onChange={(newValues) => setFieldValue(field.name, newValues)}
                   label="Resedatum"
                   size="lg"
-                  className="*:border *:border-gray-200 *:bg-white *:shadow-xl *:shadow-gray-700/10 *:hover:bg-default-50"
+                  radius="sm"
+                  className=" *:bg-surface *:hover:bg-default-50"
                   classNames={formStyling.calendar}
                     />
               </I18nProvider>
@@ -137,7 +140,7 @@ export function CreateBookingForm({user}: {user: User}) {
                 onChange={(newValues) => setFieldValue(field.name, newValues)}
                 label={"Välj rum"}
                 orientation="horizontal"
-                className={"rounded-large border border-gray-200 bg-white p-3 shadow-xl shadow-gray-700/10"}
+                className={"rounded-lg bg-surface p-3"}
                 classNames={{
                   wrapper: "grid grid-cols-2 gap-x-4 sm:grid-cols-3"
                 }}
@@ -150,7 +153,7 @@ export function CreateBookingForm({user}: {user: User}) {
                     value={room.id}
                     radius={"lg"}
                     size={"md"}
-                    color={"secondary"}
+                    color="secondary"
                   >
                     <span className="leading-none">{room.value}</span>
                   </Checkbox>
@@ -166,13 +169,13 @@ export function CreateBookingForm({user}: {user: User}) {
                 label="Meddelande"
                 placeholder="Övrig information som kan vara bra att veta"
                 size="lg"
-                radius="lg"
+                radius="sm"
                 classNames={formStyling.input}
               />
             )}
           </Field>
           
-          <button type="submit" className="btn-primary btn-lg">
+          <button type="submit" className="inline-block bg-secondary-500 text-white rounded-2xl py-4 px-8">
             <span>Lägg in bokning</span>
           </button>
         </Form>

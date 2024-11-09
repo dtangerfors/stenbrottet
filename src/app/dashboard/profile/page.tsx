@@ -10,7 +10,7 @@ import clsx from "clsx";
 export default async function Profile() {
   const {isMobile} = getDeviceType(); 
   const user = await getUserProfileData();
-  const bookings = await fetchUserBookings("8b564bfd-869e-4876-864c-2d2b1ea95d6c");
+  const bookings = await fetchUserBookings(user.app_user_id);
 
   return (
     <>
