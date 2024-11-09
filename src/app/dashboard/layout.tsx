@@ -15,7 +15,7 @@ export default async function DashboardLayout({
     <AppProvider>
       <div className="flex min-h-dvh bg-background">
         {!isMobile && <DesktopNav isMobile={isMobile} />}
-        <main className="flex-1 dark">{children}</main>
+        <main className="flex-1">{children}</main>
         {isMobile && <MobileNav />}
       </div>
     </AppProvider>

@@ -43,7 +43,7 @@ export const PrimaryButton = ({ onClick, actionText, text }: ButtonProps) => {
 export function UpdateBooking({ id }: { id: string }) {
   return (
     <Link
-      href={`/app/booking/${id}/edit`}
+      href={`/dashboard/booking/${id}/edit`}
       className="inline-block rounded-full p-1 text-gray-500 hover:text-gray-950"
     >
       <Tooltip content="Ändra bokning">
