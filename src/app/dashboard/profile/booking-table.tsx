@@ -9,11 +9,11 @@ import { UpdateBooking } from "@/components/buttons";
 import { CancelBooking } from "@/components/modal/cancel-booking";
 
 const tableHeaderCell = clsx(
-  "@3xl:table-cell group px-3 h-10 align-middle bg-background whitespace-nowrap text-foreground-1 text-tiny font-semibold first:rounded-s-lg last:rounded-e-lg text-start"
+  "table-cell group px-3 h-10 align-middle bg-background whitespace-nowrap text-foreground-1 text-tiny font-semibold first:rounded-s-lg last:rounded-e-lg text-start"
 );
 const tableCell = clsx(
-  "@3xl:table-cell @3xl:py-2 @3xl:px-3 relative align-middle whitespace-normal text-foreground text-small font-normal",
-  "before:content-[attr(data-before)] before:block @3xl:before:hidden before:text-foreground-1 before:text-tiny before:font-semibold"
+  "table-cell py-2 px-3 relative align-middle whitespace-normal text-foreground text-small font-normal",
+  "before:content-[attr(data-before)] before:block before:hidden before:text-foreground-1 before:text-tiny before:font-semibold"
 );
 
 export function BookingTable({ bookings }: { bookings: Booking[] }) {
@@ -27,8 +27,8 @@ export function BookingTable({ bookings }: { bookings: Booking[] }) {
 
   return (
     <div className="rounded-2xl bg-surface p-3 overflow-x-scroll @container">
-      <section className="min-w-full h-auto w-full @3xl:table">
-        <header className="hidden @3xl:table-header-group [&>tr]:first:rounded-lg">
+      <section className="min-w-[48rem] h-auto w-full table">
+        <header className="table-header-group [&>tr]:first:rounded-lg">
           <span className={tableHeaderCell}>Resedatum</span>
           <span className={tableHeaderCell}>Gäster</span>
           <span className={tableHeaderCell}>Rum</span>
@@ -38,11 +38,11 @@ export function BookingTable({ bookings }: { bookings: Booking[] }) {
             Ändra
           </span>
         </header>
-        <ul className="@3xl:table-row-group">
+        <ul className="table-row-group">
           {bookingsSorted.map((booking) => (
-            <li key={booking.id} className="@3xl:table-row border-b last:border-none pb-4 mb-4 border-foreground-2">
+            <li key={booking.id} className="table-row border-b last:border-none pb-4 mb-4 border-foreground-2">
             <ul
-              className={clsx("grid grid-cols-2 @xl:grid-cols-3 @3xl:contents gap-4", booking.is_canceled && "opacity-50")}
+              className={clsx("contents gap-4", booking.is_canceled && "opacity-50")}
               key={booking.id}
             >
               <li data-before="Resedatum" className={tableCell}>
