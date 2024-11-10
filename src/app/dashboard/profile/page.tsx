@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { BookingStatistics } from './booking-stats';
 import { BookingTable } from "./booking-table"
 import clsx from "clsx";
+import { Main } from "@/components/dashboard/sections";
 
 export default async function Profile() {
   const {isMobile} = getDeviceType(); 
@@ -15,8 +16,8 @@ export default async function Profile() {
   return (
     <>
     {isMobile && <FixedHeader label={user.name} invisibleFromStart />}
-      <div className={clsx("flex w-full flex-col", isMobile && "mt-14")}>
-        <div className="flex flex-col items-center justify-center bg-primary p-6 max-lg:pb-16 lg:p-12">
+      <div className={clsx("flex w-full flex-col pt-safe-top")}>
+        <div className="flex flex-col items-center justify-center bg-primary p-6 max-lg:pb-16 lg:p-12 rounded-b-2xl lg:rounded-none">
           <><div className="mb-3">
               <figure className="relative h-32 w-32 overflow-hidden rounded-full border border-gray-100 bg-white">
                 <Image
@@ -34,9 +35,9 @@ export default async function Profile() {
               </div></>
           
         </div>
-          <div className="flex flex-col gap-2 lg:p-6 overflow-hidden">
+        <Main>
             <BookingTable bookings={bookings} />
-          </div>
+        </Main>
       </div>
     </>
   );

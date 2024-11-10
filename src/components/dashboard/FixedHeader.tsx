@@ -7,9 +7,11 @@ type FixedHeaderProps = {
   contentRight?: React.ReactNode;
   contentLeft?: React.ReactNode;
   invisibleFromStart?: boolean;
+  children?: React.ReactNode;
 };
 
 export default function FixedHeader({
+  children,
   label,
   contentRight,
   contentLeft,
@@ -57,7 +59,7 @@ export default function FixedHeader({
       <div className="flex items-center w-full h-14 max-w-screen-xl mx-auto">
         <span className="grow">{contentLeft}</span>
         <span className="text-base text-white font-sans font-medium">
-          {label || currentMonth}
+          {children || label || currentMonth}
         </span>
         <span className="grow">{contentRight}</span>
       </div>

@@ -5,8 +5,10 @@ type SectionProps = {
 }
 
 export const Hero = ({ title }: {title: string}) => (
-  <header className="bg-primary rounded-b-2xl lg:rounded-none p-6 h-44 flex items-center lg:items-end">
-    <h1 className="font-serif text-3xl font-extrabold text-white">{title}</h1>
+  <header className="bg-primary rounded-b-2xl lg:rounded-none pt-safe-top">
+    <div className="p-6 h-44 flex items-center lg:items-end">
+      <h1 className="font-serif text-3xl font-extrabold text-white">{title}</h1>
+    </div>
   </header>
 )
 

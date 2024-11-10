@@ -9,6 +9,8 @@ import { SmallBookingCard } from "@/components/cards";
 import { PostsLoading } from "@/components/posts/posts-loading";
 import { Suspense } from "react";
 import { InfoPosts } from "@/components/posts/info-posts";
+import FixedHeader from "@/components/dashboard/FixedHeader";
+import Logo from "@/components/Logo";
 
 export default async function DashboardIndex() {
   const { isMobile } = await getDeviceType();
@@ -18,6 +20,11 @@ export default async function DashboardIndex() {
 
   return (
     <>
+      {isMobile && <FixedHeader invisibleFromStart>
+        <div className="w-8 fill-tertiary">
+          <Logo />
+        </div>
+        </FixedHeader>}
       <div className={clsx("relative grid place-items-center overflow-hidden p-6", isMobile ? "h-[27.5rem] pt-safe-top" : "h-96")}>
           <figure className={clsx(isMobile ? "fixed inset-0 z-[1] h-dvh w-dvw" : "absolute inset-0 h-full w-full")}>
             <Image
@@ -27,7 +34,7 @@ export default async function DashboardIndex() {
               height={1080}
               className="h-full w-full object-cover object-top"
             />
-            <div className="fixed inset-0 h-full w-full bg-gradient-to-b from-black/30 from-[30rem] to-surface"></div>
+            <div className="fixed inset-0 h-full w-full bg-gradient-to-b from-black/30 from-[30rem] to-background to-[30rem]"></div>
           </figure>
           <div className="relative z-10 flex flex-col items-center">
             <h1 className="mb-6 font-serif text-3xl font-semibold text-white lg:text-6xl">
