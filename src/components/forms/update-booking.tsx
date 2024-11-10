@@ -74,7 +74,7 @@ export function UpdateBookingForm({booking}: {booking: Booking}) {
             )}
           </Field>
 
-          <div className="bg-white border border-gray-200 shadow-xl shadow-gray-700/10 p-3 rounded-large">
+          <div className="bg-surface p-3 rounded-large">
             <p className="relative text-medium text-foreground-500">Vem följer med?</p>
 
             <div className="divide-y divide-gray-200">
@@ -121,7 +121,7 @@ export function UpdateBookingForm({booking}: {booking: Booking}) {
                   onChange={(newValues) => setFieldValue(field.name, newValues)}
                   label="Resedatum"
                   size="lg"
-                  className="*:border *:border-gray-200 *:bg-white *:shadow-xl *:shadow-gray-700/10 *:hover:bg-default-50"
+                  className="*:border-none *:bg-sorface *:shadow-none"
                   classNames={formStyling.calendar}
                     />
               </I18nProvider>
@@ -135,7 +135,7 @@ export function UpdateBookingForm({booking}: {booking: Booking}) {
                 onChange={(newValues) => setFieldValue(field.name, newValues)}
                 label={"Välj rum"}
                 orientation="horizontal"
-                className={"rounded-large border border-gray-200 bg-white p-3 shadow-xl shadow-gray-700/10"}
+                className={"rounded-large bg-surface p-3"}
                 classNames={{
                   wrapper: "grid grid-cols-2 gap-x-4 sm:grid-cols-3"
                 }}
@@ -148,7 +148,7 @@ export function UpdateBookingForm({booking}: {booking: Booking}) {
                     value={room.id}
                     radius={"lg"}
                     size={"md"}
-                    color={"secondary"}
+                    color={"primary"}
                   >
                     <span className="leading-none">{room.value}</span>
                   </Checkbox>
@@ -170,7 +170,7 @@ export function UpdateBookingForm({booking}: {booking: Booking}) {
             )}
           </Field>
           
-          <button type="submit" className="btn-primary btn-lg">
+          <button type="submit" className="inline-block w-full bg-secondary-500 text-white rounded-2xl py-4 px-8">
             <span>Lägg in bokning</span>
           </button>
         </Form>

@@ -20,12 +20,12 @@ export default function Menu() {
         />
         <div className="absolute inset-0 h-full w-full bg-black/30"></div>
       </figure>
-      <div className="relative z-10 pt-20">
-        <div className="sticky top-32 h-80 my-12 text-center px-6">
+      <div className="relative z-10 pt-safe-top">
+        <div className="p-6 h-44 grid place-items-center">
           <h1 className="font-serif text-3xl font-semibold text-white">Meny</h1>
         </div>
-        <div className={clsx("relative z-10 flex w-full gap-4 p-6 pb-28")}>
-          <Navigation isMobile={isMobile}  />
+        <div className={clsx("relative z-10 flex w-full max-w-screen-sm mx-auto gap-4 p-6 pb-28")}>
+          <Navigation />
         </div>
       </div>
     </>
