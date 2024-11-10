@@ -1,5 +1,6 @@
 import { fetchBookingById } from "@/lib/data";
 import { UpdateBookingForm } from "@/components/forms";
+import { Main } from "@/components/dashboard/sections";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id; 
@@ -8,8 +9,8 @@ export default async function Page({ params }: { params: { id: string } }) {
   ])
   
   return (
-    <div>
+    <Main>
       <UpdateBookingForm booking={booking} />
-    </div>
+    </Main>
   );
 }

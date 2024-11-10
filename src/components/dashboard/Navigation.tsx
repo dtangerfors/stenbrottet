@@ -4,11 +4,7 @@ import Link from "next/link";
 import { dashboardLinks, navLinks, logout } from "@/app/dashboard/links";
 import { usePathname } from "next/navigation";
 
-export default function Navigation({
-  isMobile,
-}: {
-  isMobile: RegExpMatchArray | null;
-}) {
+export default function Navigation() {
   const pathname = usePathname();
   // const roleLinks = dashboardLinks[role as keyof typeof dashboardLinks];
   const roleLinks = dashboardLinks["admin"];
@@ -17,31 +13,25 @@ export default function Navigation({
   return (
     <nav className="w-full">
       <ul
-        className={clsx(
-          "flex flex-col",
-          !isMobile && "gap-2 -mx-1",
-          isMobile &&
-            "gap-1"
-        )}
+        className={clsx("flex flex-col gap-2 lg:-mx-1")}
       >
         {links.map((link) => {
           const LinkIcon = link.icon;
           const activeLink = pathname === link.href;
 
           const styling = {
-            link: clsx("group flex grow items-center font-sans text-base font-normal transition-all",
-                            "hover:bg-secondary-100 hover:text-black",
-                            "dark:hover:bg-gray-800 dark:hover:text-white",
-                            !isMobile && "gap-2 p-1 rounded-xl",
-                            isMobile && "gap-4 p-5 bg-white dark:bg-gray-950 rounded-2xl",
-                            !activeLink && "text-gray-500 dark:text-gray-300",
-                            activeLink && "text-black dark:text-white"),
+            link: clsx( "group flex grow items-center font-sans text-base font-normal transition-all",
+                        "hover:bg-secondary-100 hover:text-black",
+                        "dark:hover:bg-gray-800 dark:hover:text-white",
+                        "gap-4 p-5 bg-surface rounded-2xl",
+                        "lg:gap-2 lg:p-1 lg:rounded-xl",
+                        !activeLink && "text-gray-500 dark:text-gray-300",
+                        activeLink && "text-foreground"
+                      ),
             iconWrapper: clsx("grid place-items-center rounded-lg transition-all",
-                            !isMobile &&
-                              "size-8 group-hover:bg-secondary-500 group-hover:text-secondary-100",
-                            !isMobile &&
-                              "dark:bg-gray-950 group-hover:dark:bg-secondary-700",
-                            activeLink && "text-secondary-100 size-8 bg-secondary-500 dark:bg-secondary-700")
+                              "lg:size-8 lg:group-hover:bg-secondary-500 lg:group-hover:text-secondary-100",
+                              "lg.dark:bg-gray-950 lg:group-hover:dark:bg-secondary-700",
+                              activeLink && "text-secondary-100 size-8 lg:bg-secondary-500 lg:dark:bg-secondary-700")
           }
           if (link.renderNativeLink) {
             return (

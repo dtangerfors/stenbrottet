@@ -3,10 +3,10 @@ import Link from "next/link";
 import Logo from "@/components/Logo";
 import Navigation from "./Navigation";
 
-export default function DesktopNav({isMobile}: {isMobile: RegExpMatchArray | null}) {
+export default function DesktopNav() {
 
   return (
-    <div className="w-72 flex flex-col gap-12 bg-white p-6 dark:bg-gray-950">
+    <div className="flex flex-col gap-12">
       <Link
         className="flex gap-4 items-center"
         href="/"
@@ -15,7 +15,7 @@ export default function DesktopNav({isMobile}: {isMobile: RegExpMatchArray | nul
           <Logo />
         </div>
       </Link>
-      <Navigation isMobile={isMobile} />
+      <Navigation />
     </div>
   )
 }

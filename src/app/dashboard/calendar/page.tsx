@@ -14,7 +14,7 @@ export default async function CalendarPage() {
 
   return (
     <CalendarProvider>
-      <div className={clsx(isMobile && "flex flex-col h-full bg-gradient-to-b from-primary from-25% to-25% to-white")}>
+      <div className={clsx(isMobile && "flex flex-col h-full bg-gradient-to-b from-primary from-25% to-25% to-surface")}>
         {isMobile && <FixedHeader />}
         <div className={clsx("@container", isMobile && "mt-14 pt-safe-top")}>
           <div className={clsx("flex flex-col @4xl:grid @4xl:grid-cols-3 w-full", !isMobile && "p-6 gap-6")}>

@@ -16,7 +16,7 @@ body:not(.app-mobile) .rbc-calendar {
 }
 
 .rbc-toolbar-label {
-   @apply text-xs uppercase font-medium text-black;
+   @apply text-xs uppercase font-medium text-foreground;
 }
 
 .rbc-btn-group {
@@ -24,11 +24,11 @@ body:not(.app-mobile) .rbc-calendar {
 }
 
 .rbc-btn-group button {
-   @apply text-sm font-medium px-3 py-2 rounded-3xl bg-gray-100 text-black hover:bg-gray-200;
+   @apply text-sm font-medium px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-black dark:text-white hover:bg-gray-200 dark:hover:bg-gray-500;
 }
 
 .app-mobile .rbc-toolbar {
-   @apply absolute -bottom-px w-full bg-white pt-5 px-6 mb-0 rounded-t-2xl;
+   @apply absolute -bottom-px w-full bg-surface pt-5 px-6 mb-0 rounded-t-2xl;
 }
 
 .app-mobile .rbc-btn-group {
@@ -36,7 +36,7 @@ body:not(.app-mobile) .rbc-calendar {
 }
 
 .app-mobile .rbc-btn-group button {
-   @apply text-black first:mr-auto;
+   @apply first:mr-auto;
 }
 
 .app-mobile .rbc-toolbar-label {
@@ -58,7 +58,7 @@ body:not(.app-mobile) .rbc-calendar {
 }
 
 .rbc-header {
-   @apply flex-1 py-1 text-center text-xs text-black font-medium uppercase;
+   @apply flex-1 py-1 text-center text-xs text-foreground font-medium uppercase;
 }
 
 .app-mobile .rbc-header {
