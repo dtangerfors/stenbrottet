@@ -62,7 +62,7 @@ export function CreateBookingForm({user}: {user: UserProfile}) {
       onSubmit={onSubmit}
     >
       {({ values, setFieldValue, errors, touched }) => (
-        <Form className="flex flex-col gap-2 md:gap-6">
+        <Form className="flex flex-col gap-2">
           <Field name="name">
             {({ field }: {field: FieldProps["field"]}) => (
               <Input
@@ -78,7 +78,7 @@ export function CreateBookingForm({user}: {user: UserProfile}) {
             )}
           </Field>
 
-          <div className="bg-surface p-3 rounded-lg max-md:px-6 max-md:rounded-2xl">
+          <div className="bg-surface p-3 rounded-lg max-sm:px-6 max-sm:rounded-2xl">
             <p className="relative text-medium text-foreground-500">Vem följer med?</p>
             <div className="divide-y divide-gray-200">
               <Field name="guests">
@@ -139,7 +139,7 @@ export function CreateBookingForm({user}: {user: UserProfile}) {
                 onChange={(newValues) => setFieldValue(field.name, newValues)}
                 label={"Välj rum"}
                 orientation="horizontal"
-                className={"rounded-lg bg-surface p-3 max-md:px-6 max-md:rounded-2xl"}
+                className={"rounded-lg bg-surface p-3 max-md:px-6 max-sm:rounded-2xl"}
                 classNames={{
                   wrapper: "grid grid-cols-2 gap-x-4 sm:grid-cols-3"
                 }}
@@ -174,7 +174,7 @@ export function CreateBookingForm({user}: {user: UserProfile}) {
             )}
           </Field>
           
-          <div className="max-md:sticky bottom-0 z-10 px-6 pt-4 pb-safe-bottom md:p-0 bg-background">
+          <div className="max-sm:sticky bottom-0 z-10 px-6 pt-4 pb-safe-bottom sm:p-0 bg-background">
             <button type="submit" className="inline-block w-full bg-secondary-500 text-white rounded-2xl py-4 px-8">
               <span>Lägg in bokning</span>
             </button>

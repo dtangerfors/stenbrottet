@@ -18,6 +18,8 @@ export default async function DashboardIndex() {
   const posts = await fetchPosts();
   const bookings = await fetchBookings();
 
+  const image = isMobile ? "/hamn-faro-mobile.jpg" : "/hamn-faro.jpg"
+
   return (
     <>
       {isMobile && <FixedHeader invisibleFromStart>
@@ -28,13 +30,13 @@ export default async function DashboardIndex() {
       <div className={clsx("relative grid place-items-center overflow-hidden p-6", isMobile ? "h-[27.5rem] pt-safe-top" : "h-96")}>
           <figure className={clsx(isMobile ? "fixed inset-0 z-[1] h-dvh w-dvw" : "absolute inset-0 h-full w-full")}>
             <Image
-              src="/digerhuvud-desktop.jpg"
+              src={image}
               alt="Ett grönt fält med blåeld"
               width={1920}
               height={1080}
               className="h-full w-full object-cover object-top"
             />
-            <div className="fixed inset-0 h-full w-full bg-gradient-to-b from-black/30 from-[30rem] to-background to-[30rem]"></div>
+           {isMobile && <div className="fixed inset-0 h-full w-full bg-gradient-to-b from-black/30 from-[30rem] to-background to-[30rem]"></div>}
           </figure>
           <div className="relative z-10 flex flex-col items-center">
             <h1 className="mb-6 font-serif text-3xl font-semibold text-white lg:text-6xl">
