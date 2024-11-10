@@ -1,13 +1,13 @@
 const input = {
   innerWrapper: "bg-transparent",
-  inputWrapper: "bg-surface shadow-none max-md:px-6 max-md:rounded-2xl",
+  inputWrapper: "bg-surface shadow-none max-sm:px-6 max-sm:rounded-2xl",
 };
 
 const calendar = {
   calendar: "bg-surface",
   gridHeader: "shadow-none border-b border-gray-200",
   separator: "mx-0",
-  inputWrapper: "shadow-none max-md:px-6 max-md:rounded-2xl"
+  inputWrapper: "shadow-none max-sm:px-6 max-sm:rounded-2xl"
 }
 
 const select = {
