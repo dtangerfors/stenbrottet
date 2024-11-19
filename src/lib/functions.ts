@@ -1,4 +1,4 @@
-import { Booking } from "./definitions";
+import { Booking, ColorType } from "./definitions";
 import { rooms } from "@/components/forms/form-options";
 
 export const showNiceDates = (travel_dates: Booking["travel_dates"]) => {
@@ -68,3 +68,10 @@ export const getRoomName = (bookedRooms: string[]) => {
 
   return roomArr.join(", ");
 };
+
+export function getRawColor(color: ColorType) {
+
+  if (color === "coral") return "#f99585";
+  if (color === "sky") return "#86b6f9";
+  if (color === "sun") return "#f9ee85";
+}

@@ -1,6 +1,15 @@
 import type { Config } from "tailwindcss";
+import { nextui } from "@nextui-org/react";
+import { colors } from "./src/lib/definitions";
 
-import {nextui} from "@nextui-org/react"
+const safeColors = colors.flatMap((color) => [
+  `bg-${color}`,
+  `bg-${color}-dark`,
+  `bg-${color}-light`,
+  `border-${color}`,
+  `border-${color}-dark`,
+  `border-${color}-light`,
+]);
 
 const config: Config = {
   content: [
@@ -9,6 +18,7 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [...safeColors],
   theme: {
     extend: {
       borderRadius: {
@@ -20,38 +30,25 @@ const config: Config = {
         foreground: "var(--foreground)",
         "foreground-1": "var(--foreground-1)",
         "foreground-2": "var(--foreground-2)",
+        "foreground-primary": "var(--foreground-primary)",
         white: "#FFFFFF",
-        offwhite: "#edeeed",
+        offwhite: "#e6e7e4",
         black: "#0e100e",
         primary: {
-          DEFAULT: "#1c3a30",
-          "50": "#f1f8f5",
-          "100": "#ddeee4",
-          "200": "#bedccc",
-          "300": "#92c3ad",
-          "400": "#63a487",
-          "500": "#42876b",
-          "600": "#306b55",
-          "700": "#265645",
-          "800": "#204537",
-          "900": "#1c3a30",
-          "950": "#0e201a",
+          DEFAULT: "#383c2b",
+          "50": "#f6f6ef",
+          "100": "#e9eadd",
+          "200": "#d5d7bf",
+          "300": "#b9be98",
+          "400": "#9ea576",
+          "500": "#818959",
+          "600": "#646c44",
+          "700": "#515739",
+          "800": "#40452f",
+          "900": "#383c2b",
+          "950": "#1d1f14",
         },
         secondary: {
-          DEFAULT: "#e8e1f5",
-          "50": "#f8f6fc",
-          "100": "#f2eef9",
-          "200": "#e8e1f5",
-          "300": "#d5c6ec",
-          "400": "#bea5e0",
-          "500": "#a781d1",
-          "600": "#9765c2",
-          "700": "#8652af",
-          "800": "#714493",
-          "900": "#5d3979",
-          "950": "#3c2451",
-        },
-        tertiary: {
           DEFAULT: "#94ad61",
           "50": "#f4f7ee",
           "100": "#e8edda",
@@ -66,19 +63,33 @@ const config: Config = {
           "950": "#1b2211",
         },
         gray: {
-        '50': '#f6f7f6',
-        '100': '#e3e4e3',
-        '200': '#c8c9c6',
-        '300': '#a4a6a2',
-        '400': '#888a85',
-        '500': '#676963',
-        '600': '#51534e',
-        '700': '#424441',
-        '800': '#373936',
-        '900': '#303130',
-        '950': '#191a19',
-    },
-    
+          "50": "#f3f3f1",
+          "100": "#e6e7e4",
+          "200": "#cdceca",
+          "300": "#b4b6af",
+          "400": "#b4b6af",
+          "500": "#9a9d95",
+          "600": "#81857a",
+          "700": "#676a62",
+          "800": "#4e5049",
+          "900": "#343531",
+          "950": "#1a1b18",
+        },
+        sky: {
+          DEFAULT: "#86b6f9",
+          dark: "#2b7cee",
+          light: "#cee2fd",
+        },
+        coral: {
+          DEFAULT: "#f99585",
+          dark: "#ee452b",
+          light: "#fdd4ce",
+        },
+        sun: {
+          DEFAULT: "#f9ee85",
+          dark: "#eeda2b",
+          light: "#fdf8ce",
+        },
       },
       fontFamily: {
         sans: ["var(--font-geist-sans)"],
@@ -100,34 +111,34 @@ const config: Config = {
         light: {
           colors: {
             primary: {
-              DEFAULT: "#e8e1f5",
-              "50": "#f8f6fc",
-              "100": "#f2eef9",
-              "200": "#e8e1f5",
-              "300": "#d5c6ec",
-              "400": "#bea5e0",
-              "500": "#a781d1",
-              "600": "#9765c2",
-              "700": "#8652af",
-              "800": "#714493",
-              "900": "#5d3979",
+              DEFAULT: "#383c2b",
+              "50": "#f6f6ef",
+              "100": "#e9eadd",
+              "200": "#d5d7bf",
+              "300": "#b9be98",
+              "400": "#9ea576",
+              "500": "#818959",
+              "600": "#646c44",
+              "700": "#515739",
+              "800": "#40452f",
+              "900": "#383c2b",
             },
             default: {
-              '50': '#f6f7f6',
-              '100': '#e3e4e3',
-              '200': '#c8c9c6',
-              '300': '#a4a6a2',
-              '400': '#888a85',
-              '500': '#676963',
-              '600': '#51534e',
-              '700': '#424441',
-              '800': '#373936',
-              '900': '#303130',
-            }
-          }
-        }
-      }
-    })
-],
+              "50": "#f3f3f1",
+              "100": "#e6e7e4",
+              "200": "#cdceca",
+              "300": "#b4b6af",
+              "400": "#b4b6af",
+              "500": "#9a9d95",
+              "600": "#81857a",
+              "700": "#676a62",
+              "800": "#4e5049",
+              "900": "#343531",
+            },
+          },
+        },
+      },
+    }),
+  ],
 };
 export default config;

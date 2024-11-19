@@ -15,8 +15,8 @@ export default async function Profile() {
 
   return (
     <>
-    {isMobile && <FixedHeader label={user.name} invisibleFromStart />}
-      <div className={clsx("flex w-full flex-col pt-safe-top")}>
+    {isMobile && <FixedHeader label={user.name} />}
+      <div className={clsx("flex w-full flex-col", isMobile && "mt-14 pt-safe-top")}>
         <div className="flex flex-col items-center justify-center bg-primary p-6 max-lg:pb-16 lg:p-12 rounded-b-2xl lg:rounded-none">
           <><div className="mb-3">
               <figure className="relative h-32 w-32 overflow-hidden rounded-full border border-gray-100 bg-white">

@@ -1,6 +1,6 @@
 'use client';
 
-import { UpdateUserForm, User } from '@/lib/definitions';
+import { Colors, UpdateUserForm, User } from '@/lib/definitions';
 import {
   Modal,
   ModalContent,
@@ -15,6 +15,7 @@ import { Select, SelectItem } from '@nextui-org/react';
 import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import { updateUserData } from '@/lib/actions';
 import { formStyling } from '../forms/styles';
+import clsx from "clsx";
 
 export const roles = [
   { key: 'super_admin', label: 'Super Admin' },
@@ -23,11 +24,18 @@ export const roles = [
   { key: 'user', label: 'User' },
 ];
 
+export const colors = [
+  { key: Colors.sun, label: 'Sol' },
+  { key: Colors.sky, label: 'Himmel' },
+  { key: Colors.coral, label: 'Korall' },
+]
+
 export function UpdateUser({ user }: { user: User }) {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
 
   const initialValues = {
     user_role: user.user_role,
+    user_color: user.user_color,
     id: user.id,
   };
 
@@ -41,7 +49,7 @@ export function UpdateUser({ user }: { user: User }) {
     <>
       <button
         onClick={onOpen}
-        className="inline-block rounded-full p-1 text-gray-500 hover:text-gray-950"
+        className="inline-block rounded-full p-1 text-foreground-1 hover:text-foreground"
       >
         <Tooltip content="Ändra användarroll">
           <PencilSquareIcon width={24} />
@@ -74,11 +82,33 @@ export function UpdateUser({ user }: { user: User }) {
                         </Select>
                       )}
                     </Field>
+                    <Field name="user_color">
+                      {({ field }: { field: FieldProps['field'] }) => (
+                        <Select
+                          label="Färg"
+                          {...field}
+                          selectedKeys={[field.value]}
+                          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                            setFieldValue(field.name, e.target.value)
+                          }
+                          classNames={formStyling.select_lg}
+                        >
+                          {colors.map((color) => (
+                            <SelectItem key={color.key} textValue={color.label}>
+                              <div className="flex gap-4 items-center">
+                                <span className={clsx("block size-4 rounded-full overflow-hidden border-gray-100 border-1", `bg-${user.user_color}`)}></span>
+                                {color.label}
+                              </div>
+                              </SelectItem>
+                          ))}
+                        </Select>
+                      )}
+                    </Field>
                   </ModalBody>
                   <ModalFooter>
                     <button
                       type="button"
-                      className="btn-tertiary btn-sm"
+                      className="btn-secondary btn-sm"
                       onClick={onClose}
                     >
                       Avbryt

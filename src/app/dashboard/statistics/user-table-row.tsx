@@ -16,7 +16,7 @@ export function UserTableRow({ bookings }: { bookings: Booking[] }) {
 
   return (
     <Disclosure as="div">
-      <div className="flex h-9 w-full items-center overflow-hidden rounded-lg bg-tertiary-100 dark:bg-tertiary-900 text-right font-medium leading-none text-tertiary-700 dark:text-tertiary-300">
+      <div className="flex h-9 w-full items-center overflow-hidden rounded-lg bg-secondary-100 dark:bg-secondary-900 text-right font-medium leading-none text-secondary-700 dark:text-secondary-300">
         <span className="w-1/3 truncate px-4 text-left leading-9">
           {bookings[0].name}
         </span>

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useCalendarContext } from "@/app/dashboard/calendar/context";
-import { Booking, BookingEvent } from "@/lib/definitions";
+import { Booking, BookingEvent, ColorType } from "@/lib/definitions";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar"
 import { format, parse, startOfWeek, getDay } from 'date-fns';
 import {sv} from "date-fns/locale/sv";
@@ -11,6 +11,7 @@ import {sv} from "date-fns/locale/sv";
 import "./calendar-styles.css";
 import { useAppContext } from "@/app/dashboard/app-context";
 import clsx from "clsx";
+import { getRawColor } from "@/lib/functions";
 
 export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobile: RegExpMatchArray | null}) {
   const router = useRouter();
@@ -38,7 +39,7 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
     event: BookingEvent,
   ) => {
     const style = {
-      backgroundColor: event.user_color,
+      backgroundColor: getRawColor(event.user_color as ColorType),
     };
     return {
       style: style,
@@ -79,7 +80,7 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
   }, [events, setBookingsThisMonth, setCurrentMonth])
 
   return (
-    <div className={clsx("relative md:col-span-2 transition-all md:bg-white md:rounded-2xl md:dark:bg-gray-950", isMobile ? "p-0 bg-primary" : "p-6")}>
+    <div className={clsx("relative md:col-span-2 transition-all md:bg-surface md:rounded-2xl", isMobile ? "p-0 bg-primary" : "p-6")}>
       <Calendar
         culture="sv"
         date={date}

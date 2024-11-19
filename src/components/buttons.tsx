@@ -44,7 +44,7 @@ export function UpdateBooking({ id }: { id: string }) {
   return (
     <Link
       href={`/dashboard/booking/${id}/edit`}
-      className="inline-block rounded-full p-1 text-gray-500 hover:text-gray-950"
+      className="inline-block rounded-full p-1 text-foreground-1 hover:text-foreground"
     >
       <Tooltip content="Ändra bokning">
         <PencilSquareIcon width={24}/>

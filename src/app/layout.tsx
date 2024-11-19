@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   const { isMobile } = getDeviceType();
   return (
-    <html lang="en" className="bg-background">
+    <html lang="sv" className="bg-background">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/mbx5ori.css" />
       </head>

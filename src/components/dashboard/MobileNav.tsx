@@ -45,9 +45,9 @@ function NavLink({link}: {link:LinkProps}) {
       key={link.name}
       href={link.href}
       className={clsx(
-        "flex grow items-center justify-center gap-2 py-4 text-base font-medium transition-all hover:text-black",
-        { "text-gray-500 dark:text-white": pathname !== link.href },
-        { "text-tertiary dark:text-tertiary-200": pathname === link.href },
+        "flex grow items-center justify-center gap-2 py-4 text-base font-medium transition-all hover:text-foreground",
+        { "text-foreground-1": pathname !== link.href },
+        { "text-secondary": pathname === link.href },
       )}
     >
       <LinkIcon size="size-6"/>

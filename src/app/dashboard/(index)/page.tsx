@@ -23,7 +23,7 @@ export default async function DashboardIndex() {
   return (
     <>
       {isMobile && <FixedHeader invisibleFromStart>
-        <div className="w-8 fill-tertiary">
+        <div className="w-8 fill-secondary">
           <Logo />
         </div>
         </FixedHeader>}

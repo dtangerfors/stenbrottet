@@ -16,7 +16,15 @@ export type User = {
 
 export type UpdateUserForm = {
   user_role: string;
+  user_color: string;
   id: string;
+}
+
+export type CompleteRegistrationFormValues = {
+  given_name: string;
+  family_name: string;
+  uuid: string;
+  email: string;
 }
 
 export type BookingFormValues = {
@@ -113,3 +121,12 @@ export type GalleryProps = {
   name: string;
   images: ImageProps[];
 }
+
+export enum Colors {
+  "sun",
+  "sky",
+  "coral",
+}
+
+export const colors = Object.values(Colors);  // = req 2
+export type ColorType = keyof typeof Colors;  // = req 1
