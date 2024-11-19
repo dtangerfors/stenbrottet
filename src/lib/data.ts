@@ -30,7 +30,7 @@ export async function fetchBookingById(id: string) {
 
 export async function fetchUsers() {
   try {
-    const users = await sql<User>`SELECT id, name, email, user_role FROM users`;
+    const users = await sql<User>`SELECT id, name, email, user_role, user_color FROM users`;
     return users.rows;
   } catch (error) {
     console.error('Failed to fetch user:', error);

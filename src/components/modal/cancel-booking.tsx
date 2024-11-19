@@ -19,7 +19,7 @@ export function CancelBooking({booking} : {booking: Booking}) {
     <>
       <button
         onClick={onOpen}
-        className="inline-block rounded-full p-1 text-warning-700 hover:text-warning-950"
+        className="inline-block rounded-full p-1 text-coral hover:text-coral-dark"
         >
         <Tooltip content="Avboka">
           <XCircleIcon width={24}/>
@@ -34,7 +34,7 @@ export function CancelBooking({booking} : {booking: Booking}) {
                 <p>Genom att avboka tas bort bokning bort ur systemet. Du kan fortfarande se den på din profil, men den kan inte återupptas.</p>
               </ModalBody>
               <ModalFooter>
-                <button className="btn-tertiary btn-sm" onClick={onClose} type="button">Avbryt</button>
+                <button className="btn-secondary btn-sm" onClick={onClose} type="button">Avbryt</button>
                 <form action={handleCancelBooking}>
                   <button className="btn-primary btn-sm" type="submit">Avboka</button>
                 </form>

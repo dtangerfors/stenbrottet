@@ -4,10 +4,9 @@ import Link from "next/link";
 import { dashboardLinks, navLinks, logout } from "@/app/dashboard/links";
 import { usePathname } from "next/navigation";
 
-export default function Navigation() {
+export default function Navigation({role}: {role: string}) {
   const pathname = usePathname();
-  // const roleLinks = dashboardLinks[role as keyof typeof dashboardLinks];
-  const roleLinks = dashboardLinks["admin"];
+  const roleLinks = dashboardLinks[role as keyof typeof dashboardLinks];
   const links = [...navLinks, ...roleLinks, ...logout];
 
   return (
@@ -25,13 +24,13 @@ export default function Navigation() {
                         "dark:hover:bg-gray-800 dark:hover:text-white",
                         "gap-4 p-5 bg-surface rounded-2xl",
                         "lg:gap-2 lg:p-1 lg:rounded-xl",
-                        !activeLink && "text-gray-500 dark:text-gray-300",
+                        !activeLink && "text-foreground-1",
                         activeLink && "text-foreground"
                       ),
             iconWrapper: clsx("grid place-items-center rounded-lg transition-all",
-                              "lg:size-8 lg:group-hover:bg-secondary-500 lg:group-hover:text-secondary-100",
-                              "lg.dark:bg-gray-950 lg:group-hover:dark:bg-secondary-700",
-                              activeLink && "text-secondary-100 size-8 lg:bg-secondary-500 lg:dark:bg-secondary-700")
+                              "lg:size-8 lg:group-hover:bg-secondary lg:group-hover:text-secondary-950",
+                              "lg:group-hover:dark:bg-secondary",
+                              activeLink && "text-secondary-100 dark:text-secondary-950 size-8 lg:bg-secondary lg:dark:bg-secondary")
           }
           if (link.renderNativeLink) {
             return (

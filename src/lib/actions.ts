@@ -1,6 +1,6 @@
 "use server";
 
-import { BookingFormValues, UpdateUserForm } from "./definitions";
+import { BookingFormValues, CompleteRegistrationFormValues, UpdateUserForm } from "./definitions";
 import { z } from "zod";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
@@ -22,6 +22,13 @@ const BookingSchema = z.object({
   user_id: z.string(),
   created_at: z.number(),
   updated_at: z.number(),
+})
+
+const CreateUserSchema = z.object({
+  uuid: z.string(),
+  given_name: z.string(),
+  family_name: z.string(),
+  email: z.string(),
 })
 
 const CreateBooking = BookingSchema.omit({id: true, created_at: true, updated_at: true });
@@ -77,10 +84,30 @@ export async function updateBooking(data: BookingFormValues) {
   redirect('/dashboard/profile');
 }
 
+export async function createUser(data: CompleteRegistrationFormValues) {
+  const {given_name, family_name, uuid, email} = CreateUserSchema.parse({
+    given_name: data.given_name,
+    family_name: data.family_name,
+    uuid: data.uuid,
+    email: data.email
+  })
+
+  const name = `${given_name} ${family_name}`;
+  const user_role = "user";
+  const user_color = "#e8e1f5";
+
+  await sql `
+    INSERT INTO users (id, name, given_name, family_name, email, user_role, user_color)
+    VALUES (${uuid}, ${name}, ${given_name}, ${family_name}, ${email}, ${user_role}, ${user_color})
+  `
+  revalidatePath('/dashboard');
+  redirect('/dashboard');
+}
+
 export async function updateUserData(data:UpdateUserForm) {
   await sql`
     UPDATE users
-    SET user_role = ${data.user_role}
+    SET user_role = ${data.user_role}, user_color = ${data.user_color}
     WHERE id = ${data.id}
   `
   revalidatePath('/dashboard/admin');

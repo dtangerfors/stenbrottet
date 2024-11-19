@@ -29,7 +29,7 @@ export function BookingChart({ bookings }: { bookings: Booking[] }) {
             <div key={`year-${year.length}-${i}`} className="flex flex-col flex-1 items-center justify-end gap-2">
               {/* bars */}
               <div
-                className="w-full max-w-6 rounded-md bg-tertiary dark:bg-tertiary-500"
+                className="w-full max-w-6 rounded-md bg-secondary dark:bg-secondary-500"
                 style={{
                   height: `${(chartHeight / topLabel) * year.length}px`,
                 }}

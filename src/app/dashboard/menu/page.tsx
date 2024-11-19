@@ -3,9 +3,13 @@ import { getDeviceType } from "@/lib/utils";
 import Navigation from "@/components/dashboard/Navigation";
 import FixedHeader from "@/components/dashboard/FixedHeader";
 import Image from "next/image";
+import { getUserProfileData } from "@/services/profile.service";
+import { getUser } from "@/lib/data";
 
-export default function Menu() {
+export default async function Menu() {
   const {isMobile} = getDeviceType(); 
+  const user = await getUserProfileData();
+  const { user_role } = await getUser(user.app_user_id);
 
   return (
     <>
@@ -25,7 +29,7 @@ export default function Menu() {
           <h1 className="font-serif text-3xl font-semibold text-white">Meny</h1>
         </div>
         <div className={clsx("relative z-10 flex w-full max-w-screen-sm mx-auto gap-4 p-6 pb-28")}>
-          <Navigation />
+          <Navigation role={user_role} />
         </div>
       </div>
     </>

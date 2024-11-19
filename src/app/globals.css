@@ -1,15 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --background: theme(colors.offwhite);
   --surface: theme(colors.white);
   --foreground: theme(colors.black);
-  --foreground-1: theme(colors.gray.600);
-  --foreground-2: theme(colors.gray.100);
+  --foreground-1: theme(colors.gray.800);
+  --foreground-2: theme(colors.gray.200);
+  --foreground-primary: theme(colors.primary.DEFAULT);
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --background: theme(colors.black);
@@ -17,6 +16,7 @@
     --foreground: theme(colors.white);
     --foreground-1: theme(colors.gray.300);
     --foreground-2: theme(colors.gray.700);
+    --foreground-primary: theme(colors.primary.200);
   }
   
 }

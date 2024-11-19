@@ -23,7 +23,7 @@ export default async function DashboardIndex() {
   return (
     <>
       {isMobile && <FixedHeader invisibleFromStart>
-        <div className="w-8 fill-tertiary">
+        <div className="w-8 fill-secondary">
           <Logo />
         </div>
         </FixedHeader>}
@@ -45,7 +45,7 @@ export default async function DashboardIndex() {
             <Weather lon="19.039444" lat="57.855" />
           </div>
         </div>
-        <Main pullUp>
+        <Main>
           <Section>
               <h2 className="mb-6 font-serif text-2xl font-semibold text-foreground max-lg:text-center lg:text-4xl">
                 Senaste bokningar
