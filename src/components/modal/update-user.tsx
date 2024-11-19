@@ -25,9 +25,9 @@ export const roles = [
 ];
 
 export const colors = [
-  { key: Colors.sun, label: 'Sol' },
-  { key: Colors.sky, label: 'Himmel' },
-  { key: Colors.coral, label: 'Korall' },
+  { key: Colors[Colors.sun], label: 'Sol' },
+  { key: Colors[Colors.sky], label: 'Himmel' },
+  { key: Colors[Colors.coral], label: 'Korall' },
 ]
 
 export function UpdateUser({ user }: { user: User }) {
