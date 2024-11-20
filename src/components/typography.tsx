@@ -64,7 +64,7 @@ export const Typography = ({
   // Main styling for the variants
   const styling: StylingProps = {
     "xl": "font-serif font-semibold text-3xl mb-4",
-    "l": "font-display font-bold text-[2rem] leading-none tracking-[1%] mb-4",
+    "l": "font-serif text-3xl font-semibold lg:text-4xl",
     "md": "font-display font-bold text-xl leading-[1.2] tracking-[1%] mb-4",
     "sm": "font-sans font-semibold text-base leading-normal mb-4",
     "xs": "font-sans font-bold text-xs leading-normal tracking-tight mb-4",

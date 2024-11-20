@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import { Typography } from "../typography";
 
 type SectionProps = {
   children: React.ReactNode;
@@ -6,8 +7,8 @@ type SectionProps = {
 
 export const Hero = ({ title }: {title: string}) => (
   <header className="bg-primary pt-safe-top">
-    <div className="p-6 h-52 flex items-center lg:items-end">
-      <h1 className="font-serif text-3xl font-extrabold text-secondary-100">{title}</h1>
+    <div className="p-6 h-52 max-lg:pb-10 flex items-end">
+      <Typography level="h1" variant="l" color="text-secondary-100">{title}</Typography>
     </div>
   </header>
 )
