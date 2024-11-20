@@ -48,8 +48,8 @@ export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
         </div>
       </button>
 
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="full" classNames={{ closeButton: "top-4 right-4"}}>
-        <ModalContent className="pt-safe-top">
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="full" classNames={{ closeButton: "relative ml-auto top-4 right-4"}}>
+        <ModalContent className="relative pt-safe-top">
             <>
               <ModalHeader className="w-full px-6 mt-6">
                 <div className="w-full max-w-screen-md mx-auto">
