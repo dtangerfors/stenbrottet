@@ -13,7 +13,7 @@ export default async function CalendarPage() {
   const bookings = await fetchBookings();
 
   return (
-    <CalendarProvider>
+    <CalendarProvider bookings={bookings}>
       <div className={clsx(isMobile && "flex flex-col h-full bg-gradient-to-b from-primary from-25% to-25% to-surface")}>
         {isMobile && <FixedHeader />}
         <div className={clsx("@container", isMobile && "mt-14 pt-safe-top")}>

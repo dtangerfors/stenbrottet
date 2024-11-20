@@ -16,11 +16,12 @@ import { getRawColor } from "@/lib/functions";
 export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobile: RegExpMatchArray | null}) {
   const router = useRouter();
   const [events, setEvents] = useState<BookingEvent[]>([]);
-  const { setCurrentMonth, setBookingsThisMonth } = useCalendarContext();
+  const { setCurrentMonth, setCurrentCalendarDate } = useCalendarContext();
   const { setSelectedDate } = useAppContext();
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
+    const dateNow = new Date;
     const bookingsToState: BookingEvent[] = [];
     bookings.forEach((booking: Booking) => {
       bookingsToState.push({
@@ -31,6 +32,7 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
       })
     })
 
+    setCurrentCalendarDate(dateNow);
     setEvents(bookingsToState);
 
   }, [bookings])
@@ -60,24 +62,10 @@ export function CalendarView({bookings, isMobile}: {bookings: Booking[], isMobil
     const monthInView = currentDateInView.getMonth();
     const yearInView = currentDateInView.getFullYear();
 
-    const bookings = events.filter((booking) => {
-      const bookingArrivalYear = booking.start.getFullYear();
-      const bookingDepartureYear = booking.end.getFullYear();
-      const bookingArrivalMonth = booking.start.getMonth();
-      const bookingDepartureMonth = booking.end.getMonth();
-
-      return (
-        (yearInView === bookingArrivalYear ||
-          yearInView === bookingDepartureYear) &&
-        (monthInView === bookingArrivalMonth ||
-          monthInView === bookingDepartureMonth)
-      );
-    });
-
-    setDate(currentDateInView)
+    setDate(currentDateInView);
+    setCurrentCalendarDate(currentDateInView);
     setCurrentMonth(`${months[monthInView]} ${yearInView}`)
-    setBookingsThisMonth(bookings);
-  }, [events, setBookingsThisMonth, setCurrentMonth])
+  }, [setCurrentMonth, setCurrentCalendarDate])
 
   return (
     <div className={clsx("relative md:col-span-2 transition-all md:bg-surface md:rounded-2xl", isMobile ? "p-0 bg-primary" : "p-6")}>

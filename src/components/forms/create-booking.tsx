@@ -175,7 +175,7 @@ export function CreateBookingForm({user}: {user: UserProfile}) {
           </Field>
           
           <div className="max-sm:sticky bottom-0 z-10 px-6 pt-4 pb-safe-bottom sm:p-0 bg-background">
-            <button type="submit" className="inline-block w-full bg-secondary-500 text-white rounded-2xl py-4 px-8">
+            <button type="submit" className="inline-block w-full bg-secondary-500 text-white text-lg font-medium rounded-2xl py-4 px-8">
               <span>Lägg in bokning</span>
             </button>
           </div>

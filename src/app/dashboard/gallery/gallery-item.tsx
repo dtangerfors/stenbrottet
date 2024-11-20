@@ -5,8 +5,9 @@ import { ArrowsPointingOutIcon } from "@heroicons/react/16/solid";
 import { GalleryProps } from "@/lib/definitions";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
-import { Thumbs } from "swiper/modules";
+import { Thumbs, Navigation } from "swiper/modules";
 import "swiper/css";
+import 'swiper/css/navigation';
 import {
   Modal,
   ModalContent,
@@ -14,6 +15,7 @@ import {
   ModalBody,
   useDisclosure,
 } from "@nextui-org/modal";
+import { Typography } from "@/components/typography";
 
 export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -22,11 +24,11 @@ export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
   return (
     <>
       <button
-        className="relative rounded-2xl flex flex-row-reverse sm:flex-col justify-between items-start p-6 sm:p-4 bg-surface"
+        className="relative rounded-2xl flex flex-row-reverse sm:flex-col justify-between items-start p-2 sm:p-4 bg-surface"
         tabIndex={0}
         onClick={onOpen}
       >
-        <figure className="relative aspect-[3/2] w-24 sm:w-full rounded-lg sm:rounded-md overflow-hidden">
+        <figure className="relative aspect-[3/2] w-1/3 sm:w-full rounded-lg sm:rounded-md overflow-hidden">
           <Image
             className="h-full w-full object-cover"
             src={gallery.images[0].src}
@@ -36,7 +38,7 @@ export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
           />
           <ArrowsPointingOutIcon className="absolute bottom-1.5 sm:bottom-4 right-1.5 sm:right-4 w-4 text-white" />
         </figure>
-        <div className="text-left sm:pt-4">
+        <div className="text-left max-sm:p-4 sm:pt-4">
             <h2 className="font-serif text-lg font-semibold text-foreground">
               {gallery.name}
             </h2>
@@ -46,21 +48,24 @@ export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
         </div>
       </button>
 
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-        <ModalContent>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="full" classNames={{ closeButton: "relative ml-auto top-4 right-4"}}>
+        <ModalContent className="relative pt-safe-top">
             <>
-              <ModalHeader>
-                <h2 className="font-serif text-2xl font-semibold text-primary">
-                  {gallery.name}
-                </h2>
+              <ModalHeader className="w-full px-6 mt-6">
+                <div className="w-full max-w-screen-md mx-auto">
+                  <Typography level="h2" variant="l" alignment="left">
+                    {gallery.name}
+                  </Typography>
+                </div>
               </ModalHeader>
               <ModalBody>
-                <div className="px-6 max-w-screen-md mx-auto">
+                <div className="w-full max-w-screen-md mx-auto">
                   <Swiper
-                    modules={[Thumbs]}
+                    modules={[Thumbs, Navigation]}
                     thumbs={{ swiper: thumbsSwiper }}
+                    navigation
                     spaceBetween={12}
-                    className="gallery-main-slider mb-6"
+                    className="gallery-swiper !overflow-visible mb-6"
                   >
                     {gallery.images.map((image, i) => (
                       <SwiperSlide key={`${gallery.name}-${i}`}>
@@ -78,7 +83,7 @@ export function GalleryItem({ gallery }: { gallery: GalleryProps }) {
                   </Swiper>
                   <Swiper
                     modules={[Thumbs]}
-                    slidesPerView={5}
+                    slidesPerView={6}
                     spaceBetween={6}
                     watchSlidesProgress
                     onSwiper={setThumbsSwiper}

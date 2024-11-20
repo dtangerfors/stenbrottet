@@ -25,3 +25,12 @@ body {
   color: var(--foreground);
   background: var(--background);
 }
+
+.swiper-thumbs .swiper-slide:not(.swiper-slide-thumb-active) {
+  @apply opacity-60;
+}
+
+.gallery-swiper .swiper-button-prev,
+.gallery-swiper .swiper-button-next {
+  @apply text-white;
+}
