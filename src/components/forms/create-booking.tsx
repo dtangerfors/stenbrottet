@@ -14,16 +14,15 @@ import {
 import { I18nProvider } from "@react-aria/i18n";
 import { rooms, guests } from "./form-options";
 import { useAppContext } from "@/app/dashboard/app-context";
-import { BookingFormValues } from "../../lib/definitions";
-import { UserProfile } from "@auth0/nextjs-auth0/client";
+import { BookingFormValues, User } from "../../lib/definitions";
 import { createBooking } from "../../lib/actions";
 import { formStyling } from "./styles";
 
-export function CreateBookingForm({user}: {user: UserProfile}) {
+export function CreateBookingForm({user}: {user: User}) {
   const {selectedDate} = useAppContext();
 
   const initialValues = {
-    name: user.name as string,
+    name: user.name,
     guests: "1",
     guests_children: "0",
     travel_dates: {
@@ -33,7 +32,7 @@ export function CreateBookingForm({user}: {user: UserProfile}) {
     rooms: [],
     message: "",
     id: "",
-    user_id: user.app_user_id as string,
+    user_id: user.id,
     created_at: 0,
     updated_at: 0,
   };
@@ -50,9 +49,10 @@ export function CreateBookingForm({user}: {user: UserProfile}) {
   const onSubmit = (values: BookingFormValues) => {
     values.travel_dates.start = values.travel_dates.start.toString();
     values.travel_dates.end = values.travel_dates.end.toString();
+    const email = user.email as string;
 
     const data = JSON.parse(JSON.stringify(values))
-    createBooking(data);
+    createBooking(data, email);
   };
 
   return (

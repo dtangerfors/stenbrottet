@@ -3,9 +3,11 @@ import { CreateBookingForm } from "@/components/forms";
 import Link from "next/link";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { getUserProfileData } from "@/services/profile.service";
+import { getUser } from "@/lib/data";
 
 export default async function Page() {
-  const user = await getUserProfileData();
+  const user_data = await getUserProfileData();
+  const user = await getUser(user_data.app_user_id);
 
   return (
     <>
