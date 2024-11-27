@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import { getDeviceType } from "@/lib/utils";
 import Weather from "@/components/weather";
-import { fetchBookings, fetchPosts } from "@/lib/data";
+import { fetchBookings, fetchPosts, getUser } from "@/lib/data";
 import { getUserProfileData } from "@/services/profile.service";
 import { Main, Section } from "@/components/dashboard/sections";
 import { SmallBookingCard } from "@/components/cards";
@@ -14,7 +14,8 @@ import Logo from "@/components/Logo";
 
 export default async function DashboardIndex() {
   const { isMobile } = await getDeviceType();
-  const user = await getUserProfileData();
+  const user_data = await getUserProfileData();
+  const user = await getUser(user_data.app_user_id);
   const posts = await fetchPosts();
   const bookings = await fetchBookings();
 
@@ -40,7 +41,7 @@ export default async function DashboardIndex() {
           </figure>
           <div className="relative z-10 flex flex-col items-center">
             <h1 className="mb-6 font-serif text-3xl font-semibold text-white lg:text-6xl">
-              Hej, {user.given_name || user.name}
+              Hej, {user.given_name}
             </h1>
             <Weather lon="19.039444" lat="57.855" />
           </div>
@@ -55,9 +56,9 @@ export default async function DashboardIndex() {
                   {bookings
                     .reverse()
                     .slice(0, 3)
-                    .map((booking, i) => (
+                    .map((booking) => (
                       <SmallBookingCard
-                      key={`latest-bookings-${i}`}
+                      key={booking.id}
                       booking={booking}
                       />
                     ))}
