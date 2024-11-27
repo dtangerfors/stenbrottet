@@ -12,7 +12,7 @@ const tableHeaderCell = clsx(
   "table-cell group px-3 h-10 align-middle bg-background whitespace-nowrap text-foreground-1 text-tiny font-semibold first:rounded-s-lg last:rounded-e-lg text-start"
 );
 const tableCell = clsx(
-  "table-cell py-2 px-3 relative align-middle whitespace-normal text-foreground text-small font-normal",
+  "group-[.is-canceled]:opacity-50 table-cell py-2 px-3 relative align-middle whitespace-normal text-foreground text-small font-normal",
   "before:content-[attr(data-before)] before:block before:hidden before:text-foreground-1 before:text-tiny before:font-semibold"
 );
 
@@ -27,7 +27,7 @@ export function BookingTable({ bookings }: { bookings: Booking[] }) {
 
   return (
     <div className="rounded-2xl bg-surface p-3 overflow-x-scroll @container">
-      <section className="min-w-[48rem] h-auto w-full table">
+      <div className="min-w-[48rem] h-auto w-full table">
         <header className="table-header-group [&>tr]:first:rounded-lg">
           <span className={tableHeaderCell}>Resedatum</span>
           <span className={tableHeaderCell}>Gäster</span>
@@ -42,8 +42,8 @@ export function BookingTable({ bookings }: { bookings: Booking[] }) {
           {bookingsSorted.map((booking) => (
             <li key={booking.id} className="table-row border-b last:border-none pb-4 mb-4 border-foreground-2">
             <ul
-              className={clsx("contents gap-4", booking.is_canceled && "opacity-50")}
-              key={booking.id}
+              className={clsx("group contents gap-4", booking.is_canceled && "is-canceled")}
+              key={`${booking.id}-list`}
             >
               <li data-before="Resedatum" className={tableCell}>
                 {showNiceDates(booking.travel_dates).withYear}
@@ -80,7 +80,7 @@ export function BookingTable({ bookings }: { bookings: Booking[] }) {
             </li>
           ))}
         </ul>
-      </section>
+      </div>
     </div>
   );
 }

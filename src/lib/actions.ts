@@ -5,6 +5,7 @@ import { z } from "zod";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { sendEmail } from "@/app/api/emails/sendEmail";
 
 const TravelDates = z.object({
   start: z.string(),
@@ -34,7 +35,7 @@ const CreateUserSchema = z.object({
 const CreateBooking = BookingSchema.omit({id: true, created_at: true, updated_at: true });
 const UpdateBooking = BookingSchema.omit({created_at: true, updated_at: true, user_id: true });
 
-export async function createBooking(data: BookingFormValues) {
+export async function createBooking(data: BookingFormValues, email: string) {
   const {name, guests, guests_children, travel_dates, rooms, user_id, message} = CreateBooking.parse({
     name: data.name,
     guests: data.guests,
@@ -50,10 +51,16 @@ export async function createBooking(data: BookingFormValues) {
   const created_at = Date.now();
   const updated_at = Date.now();
 
+  const emailData = {
+    booking: data,
+    email: email
+  }
+
   await sql`
     INSERT INTO bookings (created_at, updated_at, user_id, name, travel_dates, guests, guests_children, rooms, message)
     VALUES (${created_at}, ${updated_at}, ${user_id}, ${name}, ${travelDates}, ${guests}, ${guests_children}, ${roomsJsonb}, ${message})    
   `
+  await sendEmail(emailData);
 
   revalidatePath('/dashboard/profile');
   redirect('/dashboard/profile');

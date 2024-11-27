@@ -8,6 +8,8 @@ import { DateValue } from "@nextui-org/react";
 export type User = {
   id: string;
   name: string;
+  given_name: string;
+  family_name: string;
   email: string;
   password: string;
   user_color: string;
