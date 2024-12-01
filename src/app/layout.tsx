@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   appleWebApp: { statusBarStyle: 'black-translucent', capable: true },
   manifest: "/manifest.json",
   icons: [
-    { rel: "apple-touch-icon", url: "icons/apple-touch-icon.png" },
-    { rel: "icon", url: "icons/icon-144x144.png" },
+    { rel: "apple-touch-icon", url: "/icons/apple-touch-icon.png" },
+    { rel: "icon", url: "/icons/icon-144x144.png" },
   ],
 };
 
