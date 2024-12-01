@@ -6,6 +6,8 @@ interface Values {
 }
 
 export const sendEmail = async (values: Values) => {
+
+    console.log(process.env.NEXT_PUBLIC_URL + '/api/send');
   try {
       const response = await fetch(process.env.NEXT_PUBLIC_URL + '/api/send', {
           method: 'POST',
