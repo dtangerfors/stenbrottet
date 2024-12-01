@@ -1,15 +1,16 @@
 import { BookingFormValues } from "@/lib/definitions";
+import getUrl from "@/utils/getUrl";
 
 interface Values {
   booking: BookingFormValues;
   email: string;
 }
 
-export const sendEmail = async (values: Values) => {
+const SEND_URL = getUrl("/api/send");
 
-    console.log(process.env.NEXT_PUBLIC_URL + '/api/send');
+export const sendEmail = async (values: Values) => {
   try {
-      const response = await fetch(process.env.NEXT_PUBLIC_URL + '/api/send', {
+      const response = await fetch(SEND_URL, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
